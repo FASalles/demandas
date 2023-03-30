@@ -9,6 +9,20 @@ class Demand extends Model
 {
     use HasFactory;
 
+    protected $fillable =
+        [
+            'body',
+            'user_id',
+            'sector_id',
+            'system_id',
+            'demands_type_id',
+            'attached_issue',
+            'budgeted_hours',
+            'responsible_id',
+            'started_at',
+            'ended_at',
+        ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

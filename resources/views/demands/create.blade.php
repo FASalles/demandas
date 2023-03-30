@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div class="bg-gray-700 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5">
-                <form action="{{route('admin.posts.store')}}" method="post">
+                <form action="{{route('demands.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Título</label>
@@ -16,27 +16,27 @@
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Resumo</label>
-                        <input type="text" class="w-full rounded"name="description">
+                        <input type="text" class="w-full rounded"name="body">
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Issue associada</label>
-                        <input type="text" class="w-full rounded" name="body">
+                        <input type="text" class="w-full rounded" name="attached_issue">
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Horas orçadas</label>
-                        <input type="text" class="w-full rounded" name="title">
+                        <input type="text" class="w-full rounded" name="budgeted_hours">
                     </div>
                     <div class="w-full mb-6">
-                        <label for="" class="block text-white mb-2">Relaiva ao setor</label>
-                        <input type="text" class="w-full rounded"name="description">
+                        <label for="" class="block text-white mb-2">Relativa ao setor</label>
+                        <input type="text" class="w-full rounded"name="sector_id">
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Técnico responsável</label>
-                        <input type="text" class="w-full rounded" name="body">
+                        <input type="text" class="w-full rounded" name="user_id">
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Criada em:</label>
-                        <input type="text" class="w-full rounded" name="body">
+                        <input type="text" class="w-full rounded" name="started_at">
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Status</label>

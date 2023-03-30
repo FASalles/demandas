@@ -28,19 +28,20 @@ Route::get('/alpine', function () {
 
 //Rotas admin posts
 
-Route::prefix('/admin')->name('admin.')->group(function () {
-    Route::prefix('/posts')
-        ->name('posts.')
-        ->controller(App\Http\Controllers\Admin\PostsController::class)
-        ->group(function() {
-            Route::get('/', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('/store', 'store')->name('store');
-    });
-});
+//Route::prefix('/admin')->name('admin.')->group(function () {
+//    Route::prefix('/posts')
+//        ->name('posts.')
+//        ->controller(App\Http\Controllers\Admin\PostsController::class)
+//        ->group(function() {
+//            Route::get('/', 'index')->name('index');
+//            Route::get('/create', 'create')->name('create');
+//            Route::post('/store', 'store')->name('store');
+//    });
+//});
 
 Route::get('/demands', [\App\Http\Controllers\DemandsController::class, 'index'])->name('demands.index');
 Route::get('/demands/create', [\App\Http\Controllers\DemandsController::class, 'create'])->name('demands.create');
+Route::post('/demands/create', [\App\Http\Controllers\DemandsController::class, 'store'])->name('demands.store');
 
 
 
