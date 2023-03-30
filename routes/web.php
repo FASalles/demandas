@@ -39,6 +39,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     });
 });
 
+Route::get('/demands', [\App\Http\Controllers\DemandsController::class, 'index'])->name('demands.index');
+Route::get('/demands/create', [\App\Http\Controllers\DemandsController::class, 'create'])->name('demands.create');
+
 
 
 
