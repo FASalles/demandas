@@ -14,23 +14,18 @@ return new class extends Migration
         Schema::create('demands', function (Blueprint $table) {
             $table->id();
 
-            $table->text('title');
-            $table->text('body');
+            $table->string('title')->nullable();
+            $table->text('body')->nullable();
 
             $table->string('attached_issue')->nullable();
-            $table->string('budgeted_hours');
-            $table->foreignId('sector_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('budgeted_hours')->nullable();
+            $table->foreignId('sector_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('system_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('demands_type_id')->nullable()->constrained()->cascadeOnDelete();
 
-            $table->foreignId('sector_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('system_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('demands_type_id')->constrained()->cascadeOnDelete();
-
-            $table->string('attached_issue')->nullable();
-
-
-            $table->timestamp('started_at');
-            $table->timestamp('ended_at');
+            $table->dateTime('started_at')->nullable();
+            $table->dateTime('ended_at')->nullable();
 
             $table->timestamps();
         });

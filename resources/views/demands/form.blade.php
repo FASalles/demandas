@@ -16,7 +16,7 @@
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Resumo</label>
-                        <input type="text" class="w-full rounded"name="body">
+                        <textarea class="w-full rounded"name="body"> </textarea>
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Issue associada</label>

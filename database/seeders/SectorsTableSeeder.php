@@ -2,18 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Demand;
+use App\Models\Post;
+use App\Models\Sector;
+use App\Models\System;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class DemandsTableSeeder extends Seeder
+class SectorsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Demand::factory(5)->create();
+        Sector::factory(5)->create();
     }
 }

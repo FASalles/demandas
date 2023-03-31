@@ -9,6 +9,9 @@ class Sector extends Model
 {
     use HasFactory;
 
+    protected $fillable =
+        ['name'];
+
     public function demands()
     {
         return $this->hasMany(Demand::class);

@@ -42,8 +42,12 @@ Route::get('/alpine', function () {
 Route::get('/demands', [\App\Http\Controllers\DemandsController::class, 'index'])->name('demands.index');
 Route::get('/demands/create', [\App\Http\Controllers\DemandsController::class, 'create'])->name('demands.create');
 Route::post('/demands/create', [\App\Http\Controllers\DemandsController::class, 'store'])->name('demands.store');
+Route::get('/demands/{demand}/edit', [\App\Http\Controllers\DemandsController::class, 'edit'])->name('demands.edit');
 
-
+Route::get('/sector', [\App\Http\Controllers\SectorController::class, 'index'])->name('sector.index');
+Route::get('/sector/create', [\App\Http\Controllers\SectorController::class, 'create'])->name('sector.create');
+Route::post('/sector/create', [\App\Http\Controllers\SectorController::class, 'store'])->name('sector.store');
+Route::get('/sector/{sector}/edit', [\App\Http\Controllers\SectorController::class, 'edit'])->name('sector.edit');
 
 
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\DemandsType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this -> call(PostsTableSeeder::class);
+        $this -> call(DemandsTableSeeder::class);
+//        $this -> call(SectorsTableSeeder::class);
+//        $this -> call(SystemsTableSeeder::class);
+//        $this -> call(DemandsTypeTableSeeder::class);
     }
 }
