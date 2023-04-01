@@ -15,7 +15,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <table class="w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">
                     <thead>
-                    <tr class="even:bg-amber-100 odd:bg-blue-100">
+                    <tr>
                         <th class="px-2 py-4 text-left">#</th>
                         <th class="px-2 py-4 text-left">Título</th>
                         <th class="px-2 py-4 text-left">Resumo</th>
@@ -30,10 +30,16 @@
                     <tbody>
 
                     @forelse($demands as $demand)
-                        <tr>
+                        <tr class="even:bg-white odd:bg-blue-100">
                             <td class="px-2 py-4 text-left">{{ $demand->id }}</td>
                             <td class="px-2 py-4 text-left">{{ $demand->title }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->created_at }}</td>
+                            <td class="px-2 py-4 text-left">{{ $demand->attached_issue }}</td>
+                            <td class="px-2 py-4 text-left">{{ $demand->budgeted_hours }}</td>
+                            <td class="px-2 py-4 text-left">{{ $demand->sector_id }}</td>
+                            <td class="px-2 py-4 text-left">{{ $demand->user_id }}</td>
+                            <td class="px-2 py-4 text-left">{{ $demand->system_id }}</td>
+                            <td class="px-2 py-4 text-left">{{ $demand->demands_type_id }}</td>
+
                             <td class="px-2 py-4 text-left">
                                     <span class="font-bold {{ $demand->is_active ? 'text-green-800' : 'text-red-800' }}">
                                     {{ $demand->is_active ? 'Ativo' : 'Inativo' }}
@@ -53,9 +59,9 @@
                     @endforelse
                     </tbody>
                 </table>
-            </div>
 
-            {{--            {{ $posts->link() }}--}}
+                {{$demands->links()}}
+            </div>
         </div>
     </div>
 

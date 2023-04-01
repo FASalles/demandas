@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this -> call(DemandsTableSeeder::class);
-//        $this -> call(SectorsTableSeeder::class);
+       // $this -> call(DemandsTableSeeder::class);
+        $this -> call(SectorsTableSeeder::class);
 //        $this -> call(SystemsTableSeeder::class);
 //        $this -> call(DemandsTypeTableSeeder::class);
     }

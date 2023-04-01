@@ -9,7 +9,7 @@ class SectorController extends Controller
 {
     public function index()
     {
-        $sectors = Sector::all();
+        $sectors = Sector::paginate(5);
 
         return view('sector.index', compact('sectors'));
     }
@@ -21,11 +21,38 @@ class SectorController extends Controller
 
     public function store(Request $request)
     {
-        return redirect()->route('sector.index');
+//        return view('sector.form');
+
+        $sector = new Sector();
+
+        $sector->name = $request->name;
+        $sector->created_at = $request->created_at;
+        $sector->updated_at = $request->updated_at;
+
+        $sector->save();
+
+        return redirect()->route('sector.index')
+            ->with('success', 'Setor "' . $sector->name . '" adicionado com sucesso!');
     }
 
     public function edit($sector)
     {
-        return $sector;
+        $sector = Sector::findOrFail($sector);
+
+        return view('sector.edit', compact('sector'));
     }
+
+    public function update($sector)
+    {
+        $sectors = Sector::all();
+
+        $sector = Sector::findOrFail($sector);
+
+        $sector->update(request()->all());
+
+        return redirect()->route('sector.index')
+            ->with('success', 'Setor "' . $sector->name . '" editado com sucesso!');
+        //return view('sector.index', compact('sectors'));
+    }
+
 }

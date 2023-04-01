@@ -9,7 +9,7 @@ class DemandsController extends Controller
 {
     public function index()
     {
-        $demands = Demand::all();
+        $demands = Demand::paginate(5);
 
         return view('demands.index', compact('demands'));
     }

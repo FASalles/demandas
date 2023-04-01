@@ -23,7 +23,7 @@
                         <input type="text" class="w-full rounded" name="attached_issue">
                     </div>
                     <div class="w-full mb-6">
-                        <label for="" class="block text-white mb-2">Horas orçadas</label>
+                        <label for="" class="block text-white mb-2">Horas Orçadas</label>
                         <input type="text" class="w-full rounded" name="budgeted_hours">
                     </div>
                     <div class="w-full mb-6">
