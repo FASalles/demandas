@@ -9,7 +9,7 @@ class SectorController extends Controller
 {
     public function index()
     {
-        $sectors = Sector::paginate(5);
+        $sectors = Sector::orderBy('id', 'asc')->paginate(5);
 
         return view('sector.index', compact('sectors'));
     }
@@ -25,6 +25,7 @@ class SectorController extends Controller
 
         $sector = new Sector();
 
+        $sector->id = $request->id;
         $sector->name = $request->name;
         $sector->created_at = $request->created_at;
         $sector->updated_at = $request->updated_at;
@@ -53,6 +54,15 @@ class SectorController extends Controller
         return redirect()->route('sector.index')
             ->with('success', 'Setor "' . $sector->name . '" editado com sucesso!');
         //return view('sector.index', compact('sectors'));
+    }
+
+    public function destroy($sector)
+    {
+        $sector = Sector::findOrFail($sector);
+        $sector->delete();
+
+        return redirect()->route('sector.index')
+            ->with('success', 'Setor "' . $sector->name . '" removido com sucesso!');
     }
 
 }

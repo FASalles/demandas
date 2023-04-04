@@ -7,7 +7,7 @@
     <div class="bg-gray-600 py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="w-full mb-10 flex justify-end">
-                <a href="{{route('demands.create')}}"
+                <a href="{{route('demand.create')}}"
                    class="px-4 py-2 shadow rounded
                     text-white text-bold bg-green-700 hover:bg-green-900
                     transition ease-in-out duration-200">Criar Demanda</a>
@@ -25,9 +25,16 @@
                         <th class="px-2 py-4 text-left">Técnico responsável</th>
                         <th class="px-2 py-4 text-left">Criada em</th>
                         <th class="px-2 py-4 text-left">Status</th>
+                        <th class="px-2 py-4 text-left">Ações</th>
                     </tr>
                     </thead>
                     <tbody>
+
+                    @if (session('success'))
+                        <div class="text-center font-bold bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
                     @forelse($demands as $demand)
                         <tr class="even:bg-white odd:bg-blue-100">
@@ -46,10 +53,16 @@
                                     </span>
                             </td>
                             <td class="px-2 py-4 text-left">
-                                <a href="#"
+                                <a href="/demand/{{ $demand->id }}/edit"
                                    class="px-4 py-2 shadow rounded
-                                                        text-white text-bold bg-blue-700 hover:bg-blue-900
+                                                        text-white text-bold bg-yellow-500 hover:bg-yellow-700
                                                         transition ease-in-out duration-200">Editar</a>
+                            </td>
+                            <td class="px-2 py-4 text-left">
+                                <a href="/demand/destroy/{{ $demand->id }}"
+                                   class="px-4 py-2 shadow rounded
+                                                        text-white text-bold bg-red-700 hover:bg-red-900
+                                                        transition ease-in-out duration-200">Remover</a>
                             </td>
                         </tr>
                     @empty

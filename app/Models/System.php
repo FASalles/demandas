@@ -9,6 +9,9 @@ class System extends Model
 {
     use HasFactory;
 
+    protected $fillable =
+        ['name', 'updated_at', 'updated_at'];
+
     public function demands()
     {
         return $this->hasMany(Demand::class);

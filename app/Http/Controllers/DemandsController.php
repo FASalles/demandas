@@ -3,20 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Demand;
+use App\Models\Sector;
+use App\Models\System;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DemandsController extends Controller
 {
     public function index()
     {
-        $demands = Demand::paginate(5);
+        $demands = Demand::orderBy('id', 'asc')->paginate(5);
 
-        return view('demands.index', compact('demands'));
+        return view('demand.index', compact('demands'));
     }
 
     public function create()
     {
-        return view('demands.form');
+        $sectors = Sector::all();
+        $users = User::all();
+        $systems = System::all();
+
+        return view('demand.form', ['sectors' => $sectors,
+                                        'users' => $users,
+                                        'systems' => $systems]);
     }
 
     public function store(Request $request)
@@ -37,11 +46,35 @@ class DemandsController extends Controller
 
         $demand->save();
 
-        return redirect()->route('demands.index');
+        return redirect()->route('demand.index');
     }
 
     public function edit($demand)
     {
-        return $demand;
+        $demand = Demand::findOrFail($demand);
+
+        return view('demand.edit', compact('demand'));
+    }
+
+    public function update($demand)
+    {
+        $demands = Demand::all();
+
+        $demand = Demand::findOrFail($demand);
+
+        $demand->update(request()->all());
+
+        return redirect()->route('demand.index')
+            ->with('success', 'Demanda "' . $demand->name . '" editada com sucesso!');
+        //return view('demand.index', compact('demand'));
+    }
+
+    public function destroy($demand)
+    {
+        $demand = Demand::findOrFail($demand);
+        $demand->delete();
+
+        return redirect()->route('demand.index')
+            ->with('success', 'Demanda "' . $demand->title . '" removida com sucesso!');
     }
 }
