@@ -19,7 +19,7 @@
                     <tr>
                         <th class="px-2 py-4 text-left">#</th>
                         <th class="px-2 py-4 text-left">Nome</th>
-                        <th class="px-2 py-4 text-right">Ações</th>
+                        <th class="px-4 py-4 text-right">Ações</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,19 +36,24 @@
                             <td class="px-2 py-4 text-left">{{ $sector->name }}</td>
                             </td>
                             <td class="px-2 py-4 text-right">
-                                <a href="/sector/{{ $sector->id }}/edit" class="px-4 py-2 shadow rounded
+                                <a href="{{route('sector.edit', ['sector' => $sector->id]) }}" class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-yellow-500 hover:bg-yellow-700
                                                         transition ease-in-out duration-200">Editar</a>
                             </td>
                             <td class="px-2 py-4 text-left">
-                                <a href="/sector/destroy/{{ $sector->id }}" class="px-4 py-2 shadow rounded
+                                <form action="{{route('sector.destroy', ['sector' => $sector->id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-red-700 hover:bg-red-900
-                                                        transition ease-in-out duration-200">Remover</a>
+                                                        transition ease-in-out duration-200">Remover</button>
+                                </form>
+
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">Nenhum setor encontrado!</td>
+                            <td colspan="4">Nenhum sistema encontrado!</td>
                         </tr>
                     @endforelse
                     </tbody>
@@ -57,7 +62,7 @@
                 {{$sectors->links()}}
             </div>
 
-            {{--            {{ $posts->link() }}--}}
+
         </div>
     </div>
 

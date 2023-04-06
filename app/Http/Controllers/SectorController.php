@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SectorRequest;
 use App\Models\Sector;
 use Illuminate\Http\Request;
 
@@ -14,18 +15,22 @@ class SectorController extends Controller
         return view('sector.index', compact('sectors'));
     }
 
+    public function show($sector)
+    {
+        $sectors = Sector::orderBy('id', 'asc')->paginate(5);
+
+        return view('sector.index', compact('sectors'));
+    }
+
     public function create()
     {
         return view('sector.form');
     }
 
-    public function store(Request $request)
+    public function store(SectorRequest $request)
     {
-//        return view('sector.form');
-
         $sector = new Sector();
 
-        $sector->id = $request->id;
         $sector->name = $request->name;
         $sector->created_at = $request->created_at;
         $sector->updated_at = $request->updated_at;
@@ -33,7 +38,7 @@ class SectorController extends Controller
         $sector->save();
 
         return redirect()->route('sector.index')
-            ->with('success', 'Setor "' . $sector->name . '" adicionado com sucesso!');
+            ->with('success', 'Setor "' . $sector->name . '" criado com sucesso!');
     }
 
     public function edit($sector)
@@ -43,17 +48,15 @@ class SectorController extends Controller
         return view('sector.edit', compact('sector'));
     }
 
-    public function update($sector)
-    {
-        $sectors = Sector::all();
 
+    public function update($sector, SectorRequest $request)
+    {
         $sector = Sector::findOrFail($sector);
 
         $sector->update(request()->all());
 
         return redirect()->route('sector.index')
             ->with('success', 'Setor "' . $sector->name . '" editado com sucesso!');
-        //return view('sector.index', compact('sectors'));
     }
 
     public function destroy($sector)

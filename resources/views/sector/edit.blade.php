@@ -8,8 +8,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div class="bg-gray-700 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5">
-                <form action="/sector/update/{{$sector->id}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('sector.update', ['sector' => $sector->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">ID</label>
                         <input type="text" class="w-full rounded" name="id" value="{{ $sector->id }}">

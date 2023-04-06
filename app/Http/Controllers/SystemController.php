@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SystemRequest;
 use App\Models\System;
 use Illuminate\Http\Request;
 
@@ -14,12 +15,19 @@ class SystemController extends Controller
         return view('system.index', compact('systems'));
     }
 
+    public function show($system)
+    {
+        $systems = System::orderBy('id', 'asc')->paginate(5);
+
+        return view('system.index', compact('systems'));
+    }
+
     public function create()
     {
         return view('system.form');
     }
 
-    public function store(Request $request)
+    public function store(SystemRequest $request)
     {
         $system = new System();
 
@@ -40,17 +48,14 @@ class SystemController extends Controller
         return view('system.edit', compact('system'));
     }
 
-    public function update($system)
+    public function update($system, SystemRequest $request)
     {
-        $systems = System::all();
-
         $system = System::findOrFail($system);
 
-        $system->update(request()->all());
+        $system->update($request->all());
 
         return redirect()->route('system.index')
             ->with('success', 'Sistema "' . $system->name . '" editado com sucesso!');
-        //return view('system.index', compact('systems'));
     }
 
     public function destroy($system)

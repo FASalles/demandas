@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SystemRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,12 +16,19 @@ class UserController extends Controller
         return view('user.index', compact('users'));
     }
 
+    public function show()
+    {
+        $users = User::orderBy('id', 'asc')->paginate(5);
+
+        return view('user.index', compact('users'));
+    }
+
     public function create()
     {
         return view('user.form');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = new User();
 
@@ -41,17 +50,16 @@ class UserController extends Controller
         return view('user.edit', compact('user'));
     }
 
-    public function update($user)
+    public function update($user, SystemRequest $request)
     {
-        $users = User::all();
+
 
         $user = User::findOrFail($user);
 
-        $user->update(request()->all());
+        $user->update($request->all());
 
         return redirect()->route('user.index')
             ->with('success', 'Usuário(a) "' . $user->name . '" editado com sucesso!');
-        //return view('user.index', compact('users'));
     }
 
     public function destroy($user)

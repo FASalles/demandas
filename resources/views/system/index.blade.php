@@ -36,14 +36,19 @@
                             <td class="px-2 py-4 text-left">{{ $system->name }}</td>
                             </td>
                             <td class="px-2 py-4 text-right">
-                                <a href="/system/{{ $system->id }}/edit" class="px-4 py-2 shadow rounded
+                                <a href="{{route('system.edit', ['system' => $system->id]) }}" class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-yellow-500 hover:bg-yellow-700
                                                         transition ease-in-out duration-200">Editar</a>
                             </td>
                             <td class="px-2 py-4 text-left">
-                                <a href="/system/destroy/{{ $system->id }}" class="px-4 py-2 shadow rounded
+                                <form action="{{route('system.destroy', ['system' => $system->id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-red-700 hover:bg-red-900
-                                                        transition ease-in-out duration-200">Remover</a>
+                                                        transition ease-in-out duration-200">Remover</button>
+                                </form>
+
                             </td>
                         </tr>
                     @empty
