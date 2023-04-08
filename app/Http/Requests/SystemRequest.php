@@ -22,7 +22,7 @@ class SystemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required'
+            'name' => 'required|min:3'
         ];
     }
 
@@ -30,7 +30,8 @@ class SystemRequest extends FormRequest
     {
         return
             [
-            'name.required' => 'O campo nome é obrigatório'
+                'name.min' => 'O nome deve possuir pelo menos três caracteres',
+                'name.required' => 'O campo nome é obrigatório'
             ];
     }
 }

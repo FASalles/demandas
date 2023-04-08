@@ -9,16 +9,23 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
     public function index()
     {
-        $users = User::orderBy('id', 'asc')->paginate(5);
+        $users = $this->user->orderBy('id', 'asc')->paginate(5);
 
         return view('user.index', compact('users'));
     }
 
     public function show()
     {
-        $users = User::orderBy('id', 'asc')->paginate(5);
+        $users = $this->user->orderBy('id', 'asc')->paginate(5);
 
         return view('user.index', compact('users'));
     }
@@ -45,7 +52,7 @@ class UserController extends Controller
 
     public function edit($user)
     {
-        $user = User::findOrFail($user);
+        $user = $this->user->findOrFail($user);
 
         return view('user.edit', compact('user'));
     }
@@ -54,7 +61,7 @@ class UserController extends Controller
     {
 
 
-        $user = User::findOrFail($user);
+        $user = $this->user->findOrFail($user);
 
         $user->update($request->all());
 
@@ -64,7 +71,7 @@ class UserController extends Controller
 
     public function destroy($user)
     {
-        $user = User::findOrFail($user);
+        $user = $this->user->findOrFail($user);
         $user->delete();
 
         return redirect()->route('user.index')

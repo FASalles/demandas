@@ -31,6 +31,7 @@ class UserRequest extends FormRequest
     public function messages()
     {
         Return [
+            'name.min' => 'O nome deve possuir pelo menos seis caracteres',
             'name.required' => 'O campo :attribute é obrigatório',
             'email.required' => 'O campo :attribute é obrigatório',
             'password.required' => 'O campo :attribute é obrigatório',

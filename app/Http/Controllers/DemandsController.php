@@ -10,9 +10,23 @@ use Illuminate\Http\Request;
 
 class DemandsController extends Controller
 {
-    public function index()
+    private $demand;
+
+    public function __construct(Demand $demand)
     {
-        $demands = Demand::orderBy('id', 'asc')->paginate(5);
+        $this->demand = $demand;
+    }
+
+    public function index(Demand $demand)
+    {
+        $demands = $this->demand->orderBy('id', 'asc')->paginate(5);
+
+        return view('demand.index', compact('demands'));
+    }
+
+    public function show($demand)
+    {
+        $demands = $this->demand->orderBy('id', 'asc')->paginate(5);
 
         return view('demand.index', compact('demands'));
     }
@@ -51,27 +65,31 @@ class DemandsController extends Controller
 
     public function edit($demand)
     {
-        $demand = Demand::findOrFail($demand);
+        $demand = $this->demand->findOrFail($demand);
 
-        return view('demand.edit', compact('demand'));
+        $sectors = Sector::all();
+        $users = User::all();
+        $systems = System::all();
+
+        return view('demand.edit', ['sectors' => $sectors,
+            'users' => $users,
+            'systems' => $systems], compact('demand'));
+
     }
 
-    public function update($demand)
+    public function update(Request $request, $id)
     {
-        $demands = Demand::all();
+        $demand = $this->demand->findOrFail($id);
 
-        $demand = Demand::findOrFail($demand);
-
-        $demand->update(request()->all());
+        $demand->update($request->all());
 
         return redirect()->route('demand.index')
-            ->with('success', 'Demanda "' . $demand->name . '" editada com sucesso!');
-        //return view('demand.index', compact('demand'));
+            ->with('success', 'Demanda "' . $demand->title . '" editada com sucesso!');
     }
 
     public function destroy($demand)
     {
-        $demand = Demand::findOrFail($demand);
+        $demand = $this->demand->findOrFail($demand);
         $demand->delete();
 
         return redirect()->route('demand.index')

@@ -80,16 +80,16 @@
             </div>
 
 
-                    <div class="w-full flex justify-end">
-                        <button
-                            class="mt-10 px-4 py-2 shadow rounded text-xl
+            <div class="w-full flex justify-end">
+                <button
+                    class="mt-10 px-4 py-2 shadow rounded text-xl
                     text-white text-bold bg-green-700 hover:bg-green-900
-                    transition ease-in-out duration-200">Criar
-                            Demanda</button>
-                    </div>
-                </form>
+                    transition ease-in-out duration-200">Criar Demanda
+                </button>
             </div>
+            </form>
         </div>
+    </div>
     </div>
 
 

@@ -22,13 +22,15 @@ class SectorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+
+            'name' => 'required|min:3',
         ];
     }
 
     public function messages()
     {
         Return [
+            'name.min' => 'O nome deve possuir pelo menos três caracteres',
             'name.required' => 'O campo nome é obrigatório'
         ];
     }

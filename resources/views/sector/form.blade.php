@@ -22,15 +22,15 @@
                     @csrf
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Nome</label>
-                        <input type="text" class="w-full rounded" name="name">
+                        <input type="text" class="w-full rounded" name="name" value="{{ old('name') }}">
                     </div>
 
                     <div class="w-full flex justify-end">
                         <button
                             class="mt-10 px-4 py-2 shadow rounded text-xl
                     text-white text-bold bg-green-700 hover:bg-green-900
-                    transition ease-in-out duration-200">Criar
-                            Setor</button>
+                    transition ease-in-out duration-200">Criar Setor
+                        </button>
                     </div>
                 </form>
             </div>

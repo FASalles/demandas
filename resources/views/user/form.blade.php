@@ -22,11 +22,11 @@
                     @csrf
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Nome</label>
-                        <input type="text" class="w-full rounded" name="name">
+                        <input type="text" class="w-full rounded" name="name" value="{{ old('name') }}">
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">E-mail</label>
-                        <input type="text" class="w-full rounded" name="email">
+                        <input type="text" class="w-full rounded" name="email" value="{{ old('email') }}">
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Senha</label>

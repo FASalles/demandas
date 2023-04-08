@@ -8,16 +8,23 @@ use Illuminate\Http\Request;
 
 class SectorController extends Controller
 {
+    private $sector;
+
+    public function __construct(Sector $sector)
+    {
+        $this->sector = $sector;
+    }
+
     public function index()
     {
-        $sectors = Sector::orderBy('id', 'asc')->paginate(5);
+        $sectors = $this->sector->orderBy('id', 'asc')->paginate(5);
 
         return view('sector.index', compact('sectors'));
     }
 
     public function show($sector)
     {
-        $sectors = Sector::orderBy('id', 'asc')->paginate(5);
+        $sectors = $this->sector->orderBy('id', 'asc')->paginate(5);
 
         return view('sector.index', compact('sectors'));
     }
@@ -43,7 +50,7 @@ class SectorController extends Controller
 
     public function edit($sector)
     {
-        $sector = Sector::findOrFail($sector);
+        $sector = $this->sector->findOrFail($sector);
 
         return view('sector.edit', compact('sector'));
     }
@@ -51,7 +58,7 @@ class SectorController extends Controller
 
     public function update($sector, SectorRequest $request)
     {
-        $sector = Sector::findOrFail($sector);
+        $sector = $this->sector->findOrFail($sector);
 
         $sector->update(request()->all());
 
@@ -61,7 +68,7 @@ class SectorController extends Controller
 
     public function destroy($sector)
     {
-        $sector = Sector::findOrFail($sector);
+        $sector = $this->sector->findOrFail($sector);
         $sector->delete();
 
         return redirect()->route('sector.index')

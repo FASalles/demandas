@@ -43,18 +43,17 @@ Route::get('/alpine', function () {
 
 //Rotas CRUD para demand
 
-Route::prefix('/demand')->name('demand.')->group(function() {
+//Route::prefix('/demand')->name('demand.')->group(function() {
+//
+//    Route::get('/index', [\App\Http\Controllers\DemandsController::class, 'index'])->name('index');
+//
+//    Route::get('/create', [\App\Http\Controllers\DemandsController::class, 'create'])->name('create');
+//    Route::post('/create', [\App\Http\Controllers\DemandsController::class, 'store'])->name('store');
+//
+//    Route::get('/{demand}/edit', [\App\Http\Controllers\DemandsController::class, 'edit'])->name('edit');
+//    Route::post('/update/{demand}', [\App\Http\Controllers\DemandsController::class, 'update'])->name('update');
 
-    Route::get('/index', [\App\Http\Controllers\DemandsController::class, 'index'])->name('index');
-
-    Route::get('/create', [\App\Http\Controllers\DemandsController::class, 'create'])->name('create');
-    Route::post('/create', [\App\Http\Controllers\DemandsController::class, 'store'])->name('store');
-
-    Route::get('/{demand}/edit', [\App\Http\Controllers\DemandsController::class, 'edit'])->name('edit');
-    Route::post('/update/{demand}', [\App\Http\Controllers\DemandsController::class, 'update'])->name('update');
-});
-
-Route::get('/demand/destroy/{demand}', [\App\Http\Controllers\DemandsController::class, 'destroy'])->name('destroy');
+Route::middleware('auth')->resource('demand', \App\Http\Controllers\DemandsController::class);
 
 //Rotas CRUD para sectors
 //Route::prefix('/sector')->name('sector.')->group(function() {
@@ -68,7 +67,7 @@ Route::get('/demand/destroy/{demand}', [\App\Http\Controllers\DemandsController:
 //
 //    Route::get('/destroy/{sector}', [\App\Http\Controllers\SectorController::class, 'destroy'])->name('destroy');
 
-Route::resource('sector', \App\Http\Controllers\SectorController::class);
+Route::middleware('auth')->resource('sector', \App\Http\Controllers\SectorController::class);
 
 
 //Rotas CRUD para users
@@ -83,7 +82,7 @@ Route::resource('sector', \App\Http\Controllers\SectorController::class);
 //
 //    Route::get('/destroy/{user}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('destroy');
 //
-Route::resource('user', \App\Http\Controllers\UserController::class);
+Route::middleware('auth')->resource('user', \App\Http\Controllers\UserController::class);
 
 
 //Rotas CRUD para systems
@@ -100,7 +99,7 @@ Route::resource('user', \App\Http\Controllers\UserController::class);
 //
 //    Route::get('/destroy/{systems}', [\App\Http\Controllers\SystemController::class, 'destroy'])->name('destroy');
 
-    Route::resource('system', \App\Http\Controllers\SystemController::class);
+    Route::middleware('auth')->resource('system', \App\Http\Controllers\SystemController::class);
 
 
 

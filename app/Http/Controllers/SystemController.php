@@ -8,16 +8,23 @@ use Illuminate\Http\Request;
 
 class SystemController extends Controller
 {
+    private $system;
+
+    public function __construct(System $system)
+    {
+        $this->system = $system;
+    }
+
     public function index()
     {
-        $systems = System::orderBy('id', 'asc')->paginate(5);
+        $systems = $this->system->orderBy('id', 'asc')->paginate(5);
 
         return view('system.index', compact('systems'));
     }
 
     public function show($system)
     {
-        $systems = System::orderBy('id', 'asc')->paginate(5);
+        $systems = $this->system->orderBy('id', 'asc')->paginate(5);
 
         return view('system.index', compact('systems'));
     }
@@ -43,14 +50,14 @@ class SystemController extends Controller
 
     public function edit($system)
     {
-        $system = System::findOrFail($system);
+        $system = $this->system->findOrFail($system);
 
         return view('system.edit', compact('system'));
     }
 
     public function update($system, SystemRequest $request)
     {
-        $system = System::findOrFail($system);
+        $system = $this->system->findOrFail($system);
 
         $system->update($request->all());
 
@@ -60,7 +67,7 @@ class SystemController extends Controller
 
     public function destroy($system)
     {
-        $system = System::findOrFail($system);
+        $system = $this->system->findOrFail($system);
         $system->delete();
 
         return redirect()->route('system.index')

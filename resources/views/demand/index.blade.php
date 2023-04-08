@@ -58,11 +58,14 @@
                                                         text-white text-bold bg-yellow-500 hover:bg-yellow-700
                                                         transition ease-in-out duration-200">Editar</a>
                             </td>
-                            <td class="px-2 py-4 text-left">
-                                <a href="/demand/destroy/{{ $demand->id }}"
-                                   class="px-4 py-2 shadow rounded
-                                                        text-white text-bold bg-red-700 hover:bg-red-900
-                                                        transition ease-in-out duration-200">Remover</a>
+                            <td>
+                                <form action="{{route('demand.destroy', ['demand' => $demand->id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="px-4 py-2 shadow rounded
+                                                            text-white text-bold bg-red-700 hover:bg-red-900
+                                                            transition ease-in-out duration-200">Remover</button>
+                                </form>
                             </td>
                         </tr>
                     @empty
