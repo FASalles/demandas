@@ -11,7 +11,7 @@ class DemandsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class DemandsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required',
+            'body' => 'required',
+            'image' => 'image',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'image' =>   'Arquivo de imagem inválido'
         ];
     }
 }

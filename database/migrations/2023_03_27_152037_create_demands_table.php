@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('demand', function (Blueprint $table) {
+        Schema::create('demands', function (Blueprint $table) {
             $table->id();
 
             $table->string('title')->nullable();
@@ -19,8 +19,8 @@ return new class extends Migration
 
             $table->string('attached_issue')->nullable();
             $table->string('budgeted_hours')->nullable();
-            $table->foreignId('sector_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('sectors_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('users_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('system_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('demands_type_id')->nullable()->constrained()->cascadeOnDelete();
 
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('demand');
+        Schema::dropIfExists('demands');
     }
 };

@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function demands()
     {
-        return $this->hasMany(Demand::class);
+        return $this->hasMany(Demand::class, 'users_id');
     }
 }

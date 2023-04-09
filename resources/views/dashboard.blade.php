@@ -22,7 +22,7 @@
             <a href="/user/create" class="w-32 h-32 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-center text-3xl flex items-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">CADASTRAR USUÁRIO</a>
             <a href="/user/index" class="w-32 h-32 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-center text-3xl flex items-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR USUÁRIOS</a>
             <a href="/system/create" class="w-32 h-32 aspect-w-1 aspect-h-1 bg-blue-500 sm:w-60 sm:h-60  text-white font-black text-center text-3xl flex items-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">CRIAR UM SISTEMA</a>
-            <a href="/system/index" class="w-32 h-32 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-center text-3xl flex items-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR SISTEMA</a>
+            <a href="/system/index" class="w-32 h-32 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-center text-3xl flex items-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR SISTEMAS</a>
             <p class="self-center md:text-lg md:col-span-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur eos inventore molestiae necessitatibus neque praesentium quisquam quos repellat. A asperiores eos incidunt minima mollitia perferendis praesentium reiciendis, repellat repudiandae rerum!
             </p>
         </div>

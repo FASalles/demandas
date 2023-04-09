@@ -21,6 +21,7 @@ class Demand extends Model
             'responsible_id',
             'started_at',
             'ended_at',
+            'image'
         ];
 
     public function user()

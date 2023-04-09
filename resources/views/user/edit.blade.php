@@ -10,7 +10,7 @@
             <div class="bg-gray-700 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5">
                 <form action="{{route('user.update', ['user' => $user->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+{{--                    @method('PUT')--}}
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Nome</label>
                         <input type="text" class="w-full rounded" name="name" value="{{ $user->name }}">

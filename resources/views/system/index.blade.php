@@ -43,7 +43,7 @@
                             <td class="px-2 py-4 text-left">
                                 <form action="{{route('system.destroy', ['system' => $system->id]) }}" method="post">
                                     @csrf
-                                    @method('DELETE')
+{{--                                    @method('DELETE')--}}
                                     <button class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-red-700 hover:bg-red-900
                                                         transition ease-in-out duration-200">Remover</button>

@@ -40,6 +40,7 @@
                         <tr class="even:bg-white odd:bg-blue-100">
                             <td class="px-2 py-4 text-left">{{ $demand->id }}</td>
                             <td class="px-2 py-4 text-left">{{ $demand->title }}</td>
+                            <td class="px-2 py-4 text-left">{{ $demand->body }}</td>
                             <td class="px-2 py-4 text-left">{{ $demand->attached_issue }}</td>
                             <td class="px-2 py-4 text-left">{{ $demand->budgeted_hours }}</td>
                             <td class="px-2 py-4 text-left">{{ $demand->sector_id }}</td>
@@ -61,7 +62,7 @@
                             <td>
                                 <form action="{{route('demand.destroy', ['demand' => $demand->id]) }}" method="post">
                                     @csrf
-                                    @method('DELETE')
+{{--                                    @method('DELETE')--}}
                                     <button class="px-4 py-2 shadow rounded
                                                             text-white text-bold bg-red-700 hover:bg-red-900
                                                             transition ease-in-out duration-200">Remover</button>
