@@ -12,8 +12,8 @@ class Demand extends Model
     protected $fillable =
         [
             'body',
-            'user_id',
-            'sector_id',
+            'users_id',
+            'sectors_id',
             'system_id',
             'demands_type_id',
             'attached_issue',

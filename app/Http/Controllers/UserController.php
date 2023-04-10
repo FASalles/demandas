@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Repositories\Users;
 use App\Http\Requests\SystemRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
@@ -35,16 +36,18 @@ class UserController extends Controller
         return view('user.form');
     }
 
-    public function store(UserRequest $request)
+    public function store(UserRequest $request, Users $repository)
     {
-        $user = new User();
+//        $user = new User();
+//
+//        $user->name = $request->name;
+//        $user->login = $request->email;
+//        $user->email = $request->email;
+//        $user->password = $request->password;
+//
+//        $user->save();
 
-        $user->name = $request->name;
-        $user->login = $request->email;
-        $user->email = $request->email;
-        $user->password = $request->password;
-
-        $user->save();
+        $user = $repository->add($request);
 
         return redirect()->route('user.index')
             ->with('success', 'Usuário(a) "' . $user->name . '" adicionado com sucesso!');

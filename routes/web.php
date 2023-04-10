@@ -23,19 +23,6 @@ Route::get('/', function () {
 });
 
 
-//Rotas admin posts
-
-//Route::prefix('/admin')->name('admin.')->group(function () {
-//    Route::prefix('/posts')
-//        ->name('posts.')
-//        ->controller(App\Http\Controllers\Admin\PostsController::class)
-//        ->group(function() {
-//            Route::get('/', 'index')->name('index');
-//            Route::get('/create', 'create')->name('create');
-//            Route::post('/store', 'store')->name('store');
-//    });
-//});
-
 //Rotas CRUD para demand
 
 Route::prefix('/demand')->name('demand.')->group(function() {
@@ -100,7 +87,9 @@ Route::prefix('/system')->name('system.')->group(function() {
     Route::post('/destroy/{system}', [\App\Http\Controllers\SystemController::class, 'destroy'])->name('destroy');
 
 //    Route::middleware('auth')->resource('system', \App\Http\Controllers\SystemController::class);
+
 });
+
 
 
 

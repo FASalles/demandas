@@ -94,9 +94,14 @@
                                 <div class="col-8">
                                     <div class="my-5 space-y-4 p-4 border rounded shadow">
                                         <label class="block mb-2 font-bold text-white">Carregar uma imagem na demanda</label>
-                                        <input type="file" name="image" class="form-control">
+                                        <input type="file" id="image" name="image" class="form-control">
                                     </div>
                                 </div>
+
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+
                             </div>
 
                             <div class="w-full flex justify-end">

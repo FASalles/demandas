@@ -19,6 +19,7 @@
                     <tr>
                         <th class="px-2 py-4 text-left">#</th>
                         <th class="px-2 py-4 text-left">Nome</th>
+                        <th class="px-4 py-4 text-left">Email</th>
                         <th class="px-4 py-4 text-right">Ações</th>
                     </tr>
                     </thead>
@@ -34,6 +35,7 @@
                         <tr class="even:bg-white odd:bg-blue-100">
                             <td class="px-2 py-4 text-left">{{ $user->id }}</td>
                             <td class="px-2 py-4 text-left">{{ $user->name }}</td>
+                            <td class="px-2 py-4 text-left">{{ $user->email }}</td>
                             </td>
                             <td class="px-2 py-4 text-right">
                                 <a href="{{route('user.edit', ['user' => $user->id]) }}" class="px-4 py-2 shadow rounded

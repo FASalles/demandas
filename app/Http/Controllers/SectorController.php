@@ -2,29 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Repositories\Sectors;
 use App\Http\Requests\SectorRequest;
 use App\Models\Sector;
 use Illuminate\Http\Request;
 
 class SectorController extends Controller
 {
-    private $sector;
 
     public function __construct(Sector $sector)
     {
-        $this->sector = $sector;
+        $this->model = $sector;
     }
 
     public function index()
     {
-        $sectors = $this->sector->orderBy('id', 'asc')->paginate(5);
+        $sectors = $this->model->orderBy('id', 'asc')->paginate(5);
 
         return view('sector.index', compact('sectors'));
     }
 
+
+
     public function show($sector)
     {
-        $sectors = $this->sector->orderBy('id', 'asc')->paginate(5);
+        $sectors = $this->model->orderBy('id', 'asc')->paginate(5);
 
         return view('sector.index', compact('sectors'));
     }
@@ -34,15 +36,17 @@ class SectorController extends Controller
         return view('sector.form');
     }
 
-    public function store(SectorRequest $request)
+    public function store(SectorRequest $request, Sectors $repository)
     {
-        $sector = new Sector();
+//        $sector = new Sector();
+//
+//        $sector->name = $request->name;
+//        $sector->created_at = $request->created_at;
+//        $sector->updated_at = $request->updated_at;
+//
+//        $sector->save();
 
-        $sector->name = $request->name;
-        $sector->created_at = $request->created_at;
-        $sector->updated_at = $request->updated_at;
-
-        $sector->save();
+        $sector = $repository->add($request);
 
         return redirect()->route('sector.index')
             ->with('success', 'Setor "' . $sector->name . '" criado com sucesso!');
@@ -50,7 +54,7 @@ class SectorController extends Controller
 
     public function edit($sector)
     {
-        $sector = $this->sector->findOrFail($sector);
+        $sector = $this->model->findOrFail($sector);
 
         return view('sector.edit', compact('sector'));
     }
@@ -58,7 +62,7 @@ class SectorController extends Controller
 
     public function update($sector, SectorRequest $request)
     {
-        $sector = $this->sector->findOrFail($sector);
+        $sector = $this->model->findOrFail($sector);
 
         $sector->update(request()->all());
 
@@ -68,7 +72,7 @@ class SectorController extends Controller
 
     public function destroy($sector)
     {
-        $sector = $this->sector->findOrFail($sector);
+        $sector = $this->model->findOrFail($sector);
         $sector->delete();
 
         return redirect()->route('sector.index')

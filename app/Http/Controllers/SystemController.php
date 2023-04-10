@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Repositories\Systems;
 use App\Http\Requests\SystemRequest;
 use App\Models\System;
 use Illuminate\Http\Request;
@@ -34,15 +35,17 @@ class SystemController extends Controller
         return view('system.form');
     }
 
-    public function store(SystemRequest $request)
+    public function store(SystemRequest $request, Systems $repository)
     {
-        $system = new System();
+//        $system = new System();
+//
+//        $system->name = $request->name;
+//        $system->created_at = $request->created_at;
+//        $system->updated_at = $request->updated_at;
+//
+//        $system->save();
 
-        $system->name = $request->name;
-        $system->created_at = $request->created_at;
-        $system->updated_at = $request->updated_at;
-
-        $system->save();
+        $system = $repository->add($request);
 
         return redirect()->route('system.index')
             ->with('success', 'Sistema "' . $system->name . '" criado com sucesso!');
