@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Data\Repositories\Demands;
+use App\Data\Repositories\Sectors;
+use App\Data\Repositories\Systems;
+use App\Data\Repositories\Users;
 use App\Http\Requests\DemandsRequest;
 use App\Models\Demand;
 use App\Models\Sector;
@@ -12,11 +15,17 @@ use Illuminate\Http\Request;
 
 class DemandsController extends Controller
 {
-    private $demands;
 
-    public function __construct(Demand $demands)
+    public function __construct(Demand $demands, Demands $repository,
+                    Users $userRepository,
+                    Sectors $sectorRepository,
+                    Systems $systemRepository)
     {
-        $this->demands = $demands;
+        $this->model = $demands;
+        $this->repository = $repository;
+        $this->Users = $userRepository;
+        $this->Sectors = $sectorRepository;
+        $this->System = $systemRepository;
     }
 
     public function index()
@@ -45,7 +54,7 @@ class DemandsController extends Controller
                                         'systems' => $systems]);
     }
 
-    public function store(DemandsRequest $request, Demands $repository)
+    public function store(DemandsRequest $request)
     {
 
 //        if($image = $request->file('image')) $demand['image'] = $image->store('image', 'public');
@@ -68,7 +77,7 @@ class DemandsController extends Controller
 //
 //        $demand->save();
 
-        $demand = $repository->add($request);
+        $demand = $this->repository->add($request);
 
         return redirect()->route('demand.index')
             ->with('success', 'Demanda "' . $demand->title . '" criada com sucesso!');
@@ -78,9 +87,13 @@ class DemandsController extends Controller
     {
         $demand = Demand::findOrFail($demand);
 
-        $sectors = Sector::all();
-        $users = User::all();
-        $systems = System::all();
+//        $sectors = Sector::all();
+//        $users = User::all();
+//        $systems = System::all();
+
+        $sectors = $this->Sectors->all();
+        $users = $this->Users->all();
+        $systems = $this->System->all();
 
         return view('demand.edit', ['sectors' => $sectors,
             'users' => $users,
@@ -90,7 +103,7 @@ class DemandsController extends Controller
 
     public function update(DemandsRequest $request, $id)
     {
-        $demand = $this->demands->findOrFail($id);
+        $demand = $this->model->findOrFail($id);
 
         $demand->update($request->all());
 
@@ -100,7 +113,7 @@ class DemandsController extends Controller
 
     public function destroy($demand)
     {
-        $demand = $this->demands->findOrFail($demand);
+        $demand = $this->model->findOrFail($demand);
         $demand->delete();
 
         return redirect()->route('demand.index')

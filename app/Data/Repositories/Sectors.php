@@ -19,4 +19,9 @@ class Sectors
 
         return $sector;
     }
+
+    public function all()
+    {
+        return Sector::all();
+    }
 }

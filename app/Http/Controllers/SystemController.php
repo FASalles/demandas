@@ -11,9 +11,10 @@ class SystemController extends Controller
 {
     private $system;
 
-    public function __construct(System $system)
+    public function __construct(System $system, Systems $repository)
     {
         $this->system = $system;
+        $this->repository = $repository;
     }
 
     public function index()
@@ -35,7 +36,7 @@ class SystemController extends Controller
         return view('system.form');
     }
 
-    public function store(SystemRequest $request, Systems $repository)
+    public function store(SystemRequest $request)
     {
 //        $system = new System();
 //
@@ -45,7 +46,7 @@ class SystemController extends Controller
 //
 //        $system->save();
 
-        $system = $repository->add($request);
+        $system = $this->repository->add($request);
 
         return redirect()->route('system.index')
             ->with('success', 'Sistema "' . $system->name . '" criado com sucesso!');

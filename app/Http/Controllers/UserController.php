@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    private $user;
 
-    public function __construct(User $user)
+    public function __construct(User $user, Users $repository)
     {
         $this->user = $user;
+        $this->repository = $repository;
     }
 
     public function index()
@@ -36,18 +36,9 @@ class UserController extends Controller
         return view('user.form');
     }
 
-    public function store(UserRequest $request, Users $repository)
+    public function store(UserRequest $request)
     {
-//        $user = new User();
-//
-//        $user->name = $request->name;
-//        $user->login = $request->email;
-//        $user->email = $request->email;
-//        $user->password = $request->password;
-//
-//        $user->save();
-
-        $user = $repository->add($request);
+        $user = $this->repository->add($request);
 
         return redirect()->route('user.index')
             ->with('success', 'Usuário(a) "' . $user->name . '" adicionado com sucesso!');

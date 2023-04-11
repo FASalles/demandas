@@ -11,4 +11,6 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     protected $model;
+
+    protected $repository;
 }

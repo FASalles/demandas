@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 class SectorController extends Controller
 {
 
-    public function __construct(Sector $sector)
+    public function __construct(Sector $sector, Sectors $repository)
     {
         $this->model = $sector;
+        $this->repository = $repository;
     }
 
     public function index()
@@ -36,7 +37,7 @@ class SectorController extends Controller
         return view('sector.form');
     }
 
-    public function store(SectorRequest $request, Sectors $repository)
+    public function store(SectorRequest $request)
     {
 //        $sector = new Sector();
 //
@@ -46,7 +47,7 @@ class SectorController extends Controller
 //
 //        $sector->save();
 
-        $sector = $repository->add($request);
+        $sector = $this->repository->add($request);
 
         return redirect()->route('sector.index')
             ->with('success', 'Setor "' . $sector->name . '" criado com sucesso!');

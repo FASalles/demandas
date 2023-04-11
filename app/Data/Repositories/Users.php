@@ -20,4 +20,9 @@ Class Users
 
         return $user;
     }
+
+    public function all()
+    {
+        return User::all();
+    }
 }

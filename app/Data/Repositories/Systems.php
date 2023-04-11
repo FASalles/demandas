@@ -19,4 +19,9 @@ Class Systems
 
         return $system;
     }
+
+    public function all()
+    {
+        return System::all();
+    }
 }
