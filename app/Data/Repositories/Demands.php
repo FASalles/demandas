@@ -9,7 +9,7 @@ Class Demands
 {
     public function add(DemandsRequest $request): Demand
     {
-        if($image = $request->file('image')) $demand['image'] = $image->store('image', 'public');
+//        if($image = $request->file('image')) $demand['image'] = $image->store('image', 'public');
 
         $demand = new Demand();
 

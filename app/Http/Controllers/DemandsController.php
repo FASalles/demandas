@@ -57,26 +57,6 @@ class DemandsController extends Controller
     public function store(DemandsRequest $request)
     {
 
-//        if($image = $request->file('image')) $demand['image'] = $image->store('image', 'public');
-//
-////        $ima = $request->file('image')->store('image', 'public');
-//
-//        $demand = new Demand();
-//
-//        $demand->title = $request->title;
-//        $demand->body = $request->body;
-//        $demand->attached_issue = $request->attached_issue;
-//        $demand->budgeted_hours = $request->budgeted_hours;
-//        $demand->sectors_id = $request->sectors_id;
-//        $demand->users_id = $request->users_id;
-//        $demand->system_id = $request->system_id;
-//        $demand->demands_type_id = $request->demands_type_id;
-//
-//        $demand->started_at = $request->started_at;
-//        $demand->ended_at = $request->ended_at;
-//
-//        $demand->save();
-
         $demand = $this->repository->add($request);
 
         return redirect()->route('demand.index')
@@ -87,9 +67,6 @@ class DemandsController extends Controller
     {
         $demand = Demand::findOrFail($demand);
 
-//        $sectors = Sector::all();
-//        $users = User::all();
-//        $systems = System::all();
 
         $sectors = $this->Sectors->all();
         $users = $this->Users->all();

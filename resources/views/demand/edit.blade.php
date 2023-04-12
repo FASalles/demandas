@@ -91,6 +91,10 @@
                                 <div class="col-4">
                                     <img src="{{asset('storage/' . $demand->image)}}" alt="" class="img-fluid">
                                 </div>
+                                <div class="form-group">
+                                    <label for="image">Imagem do Evento</label>
+                                    <input type="file" id="image" name="image" class="from-control-file">
+                                </div>
                                 <div class="col-8">
                                     <div class="my-5 space-y-4 p-4 border rounded shadow">
                                         <label class="block mb-2 font-bold text-white">Carregar uma imagem na demanda</label>
