@@ -23,6 +23,7 @@ class DemandsController extends Controller
     {
         $this->model = $demands;
         $this->repository = $repository;
+
         $this->Users = $userRepository;
         $this->Sectors = $sectorRepository;
         $this->System = $systemRepository;
@@ -30,8 +31,12 @@ class DemandsController extends Controller
 
     public function index()
     {
-        $demands = auth()->user()->demands()->orderBy('id', 'asc')->paginate(5);
 
+        if (auth()->user()->isAn('admin')) {
+            $demands = Demand::orderBy('id', 'asc')->paginate(5);
+        } else {
+            $demands = auth()->user()->demands()->orderBy('id', 'asc')->paginate(5);
+        }
 
         return view('demand.index', compact('demands'));
     }

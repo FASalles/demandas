@@ -20,7 +20,7 @@ class SectorController extends Controller
     {
         $sectors = $this->model->orderBy('id', 'asc')->paginate(5);
 
-        return view('sector.index', compact('sectors'));
+        return view('sectors.index', compact('sectors'));
     }
 
 
@@ -39,13 +39,6 @@ class SectorController extends Controller
 
     public function store(SectorRequest $request)
     {
-//        $sector = new Sector();
-//
-//        $sector->name = $request->name;
-//        $sector->created_at = $request->created_at;
-//        $sector->updated_at = $request->updated_at;
-//
-//        $sector->save();
 
         $sector = $this->repository->add($request);
 

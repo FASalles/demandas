@@ -3,20 +3,30 @@
         <h2 class=" font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Setores') }}
         </h2>
-    </x-slot>
-    <div class="bg-gray-600 py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="w-full mb-10 flex justify-end">
-                <a href="{{route('sector.create')}}"
-                   class="px-4 py-2 shadow rounded
-                    text-white text-bold bg-green-700 hover:bg-green-900
-                    transition ease-in-out duration-200">Criar Setor</a>
-            </div>
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <table class="w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">
-                    <thead>
-                    <tr>
+    </x-slot>
+
+    <div class="m-4 bg-gray-600 py-12">
+
+        <div class="col-md-9">
+            {{--            <form action="{{ route('sectors.index') }}" id="searchForm">--}}
+            @include(
+                'livewire.partials.search-form',
+                [
+                    'routeSearch' => 'sectors.index',
+                    'routeCreate' => 'sectors.create',
+                ]
+            )
+            {{--            </form>--}}
+        </div>
+
+        <imput class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+
+            <div class="m-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <table class="m-4 w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">
+                    <thead class="m-4">
+                    <tr class="m-4">
                         <th class="px-2 py-4 text-left">#</th>
                         <th class="px-2 py-4 text-left">Nome</th>
                         <th class="px-4 py-4 text-right">Ações</th>
@@ -44,16 +54,18 @@
                                 <form action="{{route('sector.destroy', ['sector' => $sector->id]) }}" method="post">
                                     @csrf
 {{--                                    @method('DELETE')--}}
+                                    @can('sector:delete')
                                     <button class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-red-700 hover:bg-red-900
                                                         transition ease-in-out duration-200">Remover</button>
+                                    @endcan
                                 </form>
 
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">Nenhum sistema encontrado!</td>
+                            <td colspan="4">Nenhum setor encontrado!</td>
                         </tr>
                     @endforelse
                     </tbody>

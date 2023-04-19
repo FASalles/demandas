@@ -3,9 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
+use Silber\Bouncer\BouncerFacade as Bouncer;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,8 +22,29 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('settings:show', function (User $user) {
-            return $user->id = 1;
-        });
+        Bouncer::allow('admin')
+            ->to([
+                'tools:show', 'tools:update', 'tools:delete',
+                'user:show', 'user:update', 'user:delete',
+                'system:show', 'system:update', 'system:delete',
+                'sector:show', 'sector:update', 'sector:delete',
+                'demand:show', 'demand:update', 'demand:delete'
+            ]);
+
+        Bouncer::allow('editor')
+            ->to([
+                'user:show', 'user:update', 'user:delete',
+                'system:show', 'system:update', 'system:delete',
+                'sector:show', 'sector:update', 'sector:delete',
+                'demand:show', 'demand:update', 'demand:delete'
+            ]);
+
+        Bouncer::allow('visitor')
+            ->to([
+                'user:show', 'user:update',
+                'system:show', 'system:update',
+                'sector:show', 'sector:update',
+                'demand:show', 'demand:update'
+            ]);
     }
 }

@@ -23,6 +23,9 @@
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Nome</label>
                         <input type="text" class="w-full rounded" name="name" value="{{ old('name') }}">
+                        @error('name')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">E-mail</label>

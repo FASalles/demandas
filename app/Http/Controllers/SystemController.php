@@ -48,8 +48,7 @@ class SystemController extends Controller
 
         $system = $this->repository->add($request);
 
-        return redirect()->route('system.index')
-            ->with('success', 'Sistema "' . $system->name . '" criado com sucesso!');
+        return view('system.edit', compact('system'));
     }
 
     public function edit($system)

@@ -9,8 +9,6 @@ Class Demands
 {
     public function add(DemandsRequest $request): Demand
     {
-//        if($image = $request->file('image')) $demand['image'] = $image->store('image', 'public');
-
         $demand = new Demand();
 
         $demand->title = $request->title;
@@ -26,6 +24,8 @@ Class Demands
         $demand->ended_at = $request->ended_at;
 
         $demand->save();
+
+        if($image = $request->file('image')) $demand->image = $image->store('image', 'public');
 
         return $demand;
     }
