@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+Route::get('/user', \App\Http\Livewire\UsersIndex::class)
+    ->name('user.index');
+
 Route::prefix('/user')->name('user.')->group(function() {
-Route::get('/index', [UserController::class, 'index'])->name('index');
+//Route::get('/index', [UserController::class, 'index'])->name('index');
 
 Route::get('/create', [UserController::class, 'create'])->name('create');
 Route::post('/create', [UserController::class, 'store'])->name('store');

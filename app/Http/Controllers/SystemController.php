@@ -38,17 +38,11 @@ class SystemController extends Controller
 
     public function store(SystemRequest $request)
     {
-//        $system = new System();
-//
-//        $system->name = $request->name;
-//        $system->created_at = $request->created_at;
-//        $system->updated_at = $request->updated_at;
-//
-//        $system->save();
 
         $system = $this->repository->add($request);
 
-        return view('system.edit', compact('system'));
+        return redirect()->route('system.index')
+            ->with('success', 'Sistema "' . $system->name . '" criado com sucesso!');
     }
 
     public function edit($system)

@@ -4,9 +4,15 @@ namespace App\Data\Repositories;
 
 use App\Http\Requests\SectorRequest;
 use App\Models\Sector;
+use Illuminate\Database\Eloquent\Builder;
 
 class Sectors
 {
+    public function newQuery(): Builder
+    {
+        return app(Builder::class)->newQuery();
+    }
+
     public function add(SectorRequest $request): Sector
     {
         $sector = new Sector();

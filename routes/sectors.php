@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectorController;
 use App\Http\Livewire\SectorsIndex as SectorsIndex;
 
-Route::get('/sectors', \App\Http\Livewire\SectorsIndex::class)
-    ->name('sectors.index');
+Route::get('/sector', \App\Http\Livewire\SectorsIndex::class)
+    ->name('sector.index');
 
 Route::prefix('/sector')->name('sector.')->group(function() {
 

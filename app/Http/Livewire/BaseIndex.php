@@ -9,6 +9,7 @@ abstract class BaseIndex extends Component
 {
     use WithPagination;
 
+    protected $model;
     protected $repository;
     protected $paginationTheme = 'bootstrap';
     public $searchString = '';
@@ -67,12 +68,15 @@ abstract class BaseIndex extends Component
             $repository->disablePagination();
         }
 
+        $query = $this->model::query();
+
         $query = $repository
-            ->newQuery()
+            //->newQuery()
             ->where(function ($query) {
                 collect($this->searchFields)->each(function ($key, $field) use ($query) {
                     switch ($key) {
                         case 'text':
+                            dd('oi');
                             $query->when($this->searchString, function ($query) use ($field) {
                                 $query->orWhereRaw(
                                     'unaccent(' .

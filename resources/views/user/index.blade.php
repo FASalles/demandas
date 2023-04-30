@@ -4,14 +4,13 @@
             {{ __('Usuários') }}
         </h2>
     </x-slot>
-    <div class="m-4 bg-gray-600 py-12">
+    <div class="m-4 bg-gray-600 py-2">
         <imput class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <imput class="flex flex-row justify-end">
-                <a href={{ route('user.create')}} class="m-4 px-4 py-2 shadow rounded
-                   text-white text-bold bg-green-700 hover:bg-green-900
-                   transition ease-in-out duration-200">
-                Criar Usuário</a>
+                <a href="{{ route('user.create') }}" class="m-4 px-4 py-2 shadow rounded-full text-white font-bold bg-green-700 hover:bg-green-900 transition ease-in-out duration-200">
+                    Criar Usuário
+                </a>
 
                 <input type="text" class="m-4 border rounded px-4 py-2" placeholder="pesquisar...">
             </imput>

@@ -1,10 +1,11 @@
-<x-app-layout>
+<div>
     <x-slot name="header">
         <h2 class=" font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Sistemas') }}
         </h2>
     </x-slot>
-    <div class="m-4 bg-gray-600 py-12">
+
+    <div class="m-4 bg-gray-600 py-2">
         <imput class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <imput class="flex flex-row justify-end">
@@ -13,7 +14,8 @@
                    transition ease-in-out duration-200">
                 Criar Sistema</a>
 
-                <input type="text" class="m-4 border rounded px-4 py-2" placeholder="pesquisar...">
+                <input type="text" class="m-4 border rounded px-4 py-2" placeholder="pesquisar..."
+                       wire:model.debounce.500ms="searchString">
             </imput>
             <div class="m-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <table class=" w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">
@@ -68,8 +70,6 @@
 
 
     </div>
-    </div>
+</div>
 
-
-</x-app-layout>
-
+</div>

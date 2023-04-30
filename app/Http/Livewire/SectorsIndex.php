@@ -4,22 +4,25 @@ namespace App\Http\Livewire;
 
 use App\Data\Repositories\Sectors as SectorsRepository;
 use Livewire\Component;
-use App\Http\Livewire\BaseIndex;
+use App\Models\Sector;
+use Livewire\WithPagination;
 
-class SectorsIndex extends BaseIndex
+class SectorsIndex extends Component
 {
-    protected $repository = SectorsRepository::class;
+    use WithPagination;
 
-    public $orderByField = 'name';
-    public $orderByDirection = 'asc';
-    public $paginationEnabled = true;
+    public $searchString = '';
 
-    public $searchFields = [
-        'sectors.name' => 'text',
-    ];
-
-    public function render()
+    public function updatedSearchString()
     {
-        return view('livewire.sectors.index')->with(['sectors' => $this->filter()]);
+        $this->resetPage();
+    }
+
+    public function render(Sector $sector)
+    {
+        $model = Sector::class;
+
+        return view('livewire.sectors-index')->with(['sectors' => $model::where('name', 'ilike', '%'.$this->searchString.'%' ?? '' )
+            ->orderBy('id', 'asc')->paginate(5)]);
     }
 }

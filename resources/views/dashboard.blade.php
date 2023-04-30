@@ -16,13 +16,14 @@
             Lorem ipsum dolor sit amet. Atque enim magni neque vitae? Beatae illum laboriosam necessitatibus placeat sit ullam. Eos facere laudantium nobis quisquam.
             </p>
             <a href="/demand/create" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-blue-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300 ">CRIAR DEMANDA</a>
-            <a href="/demand/index" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-blue-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR DEMANDAS</a>
+            <a href="/demand" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-blue-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR DEMANDAS</a>
             <a href="/sector/create" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">CRIAR UM SETOR</a>
-            <a href="/sector/index" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-blue-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALISAR SETOR</a>
+            <a href="/sector" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-blue-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALISAR SETOR</a>
             <a href="/user/create" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">CADASTRAR USUÁRIO</a>
-            <a href="/user/index" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR USUÁRIOS</a>
+            <a href="/user" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR USUÁRIOS</a>
             <a href="/system/create" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-blue-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">CRIAR UM SISTEMA</a>
-            <a href="/system/index" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR SISTEMAS</a>
+            <a href="/system" class="w-48 h-48 aspect-w-1 aspect-h-1 bg-pink-500 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">VISUALIZAR SISTEMAS</a>
+
             @can('tools:show')
                 <a href="/tools/index" class="bg-gray-500 w-48 h-48 aspect-w-1 aspect-h-1 sm:w-60 sm:h-60  text-white font-black text-3xl flex items-center justify-center text-center h-full shadow-lg hover:scale-105 hover:z-10 transition transform duration-300">
                     <i class="fa-solid fa-screwdriver-wrench self-center" style="font-size: 75px;"></i>
