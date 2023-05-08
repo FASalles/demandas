@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f5d790fac42a4aa7c89bf5dc4558323b3a6802b7',
+        'reference' => '631d875376d1ca3f97f66e584bf03952e55b1d3a',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -391,7 +391,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f5d790fac42a4aa7c89bf5dc4558323b3a6802b7',
+            'reference' => '631d875376d1ca3f97f66e584bf03952e55b1d3a',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -495,6 +495,15 @@
             'install_path' => __DIR__ . '/../maximebf/debugbar',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'mbarlow/megaphone' => array(
+            'pretty_version' => '1.2.0',
+            'version' => '1.2.0.0',
+            'reference' => 'bbd9ffb404f0d3cc44662ee6a5f8ccfe08c64ee9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mbarlow/megaphone',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'mockery/mockery' => array(
             'pretty_version' => '1.5.1',

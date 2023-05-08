@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SystemController;
 
-Route::get('/system', \App\Http\Livewire\SystemsIndex::class)
+Route::middleware('auth')->get('/system', \App\Http\Livewire\SystemsIndex::class)
     ->name('system.index');
 
-Route::prefix('/system')->name('system.')->group(function() {
+Route::middleware('auth')->prefix('/system')->name('system.')->group(function() {
 
 //    Route::get('/index', [SystemController::class, 'index'])->name('index');
 

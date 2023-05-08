@@ -88,19 +88,9 @@
                                     Imagem Demanda
                                     <hr>
                                 </DIV>
+
                                 <div class="col-4">
-                                    <img src="http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png" class="img-fluid">
-                                </div>
-
-                                <div class="col-8">
-                                    <div class="my-5 space-y-4 p-4 border rounded shadow">
-                                        <label class="block mb-2 font-bold text-white">Carregar uma imagem na demanda</label>
-                                        <input type="file" id="image" name="image" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <hr>
+                                    <img src="{{asset('storage/' . $demand->image)}}" class="sm:max-w-sm>
                                 </div>
 
                             </div>

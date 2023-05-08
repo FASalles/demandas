@@ -9,7 +9,7 @@
         <imput class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <imput class="flex flex-row justify-end">
-                <a href={{ route('system.create')}} class="m-4 px-4 py-2 shadow rounded-full
+                <a href={{ route('system.create')}} class="focus:ring-2 m-4 px-4 py-2 shadow rounded-full
                    text-white text-bold bg-green-700 hover:bg-green-900
                    transition ease-in-out duration-200">
                 Criar Sistema</a>

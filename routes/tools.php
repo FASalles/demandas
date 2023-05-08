@@ -8,7 +8,7 @@ function middleware(string $string)
 
 }
 
-Route::prefix('/tools')->name('tools.')->group(function() {
+Route::middleware('auth')->prefix('/tools')->name('tools.')->group(function() {
 
     Route::get('/index', [ToolController::class, 'index'])
         ->name('index')

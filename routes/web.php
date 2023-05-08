@@ -1,11 +1,18 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     return view('dashboard');
+});
+
+Route::get('/notification', function () {
+    $user = \App\Models\User::first();
+
+    $user->notify(new \App\Notifications\newNotification());
 });
 
 require __DIR__.'/demands.php';

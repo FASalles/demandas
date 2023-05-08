@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use MBarlow\Megaphone\Types\BaseAnnouncement;
+use MBarlow\Megaphone\Types\Important;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+use MBarlow\Megaphone\HasMegaphone;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities;
+    use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities, HasMegaphone;
 
 
     /**
@@ -53,3 +56,5 @@ class User extends Authenticatable
         return $this->hasMany(Demand::class, 'users_id');
     }
 }
+
+

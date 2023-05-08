@@ -31,7 +31,6 @@ class DemandsController extends Controller
 
     public function index()
     {
-
         if (auth()->user()->isAn('admin')) {
             $demands = Demand::orderBy('id', 'asc')->paginate(5);
         } else {
@@ -53,10 +52,12 @@ class DemandsController extends Controller
         $sectors = Sector::all();
         $users = User::all();
         $systems = System::all();
+        $demands = Demand::all();
 
         return view('demand.form', ['sectors' => $sectors,
                                         'users' => $users,
-                                        'systems' => $systems]);
+                                        'systems' => $systems,
+                                        'demands' => $demands]);
     }
 
     public function store(DemandsRequest $request)

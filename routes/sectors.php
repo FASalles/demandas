@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectorController;
 use App\Http\Livewire\SectorsIndex as SectorsIndex;
 
-Route::get('/sector', \App\Http\Livewire\SectorsIndex::class)
+Route::middleware('auth')->get('/sector', \App\Http\Livewire\SectorsIndex::class)
     ->name('sector.index');
 
-Route::prefix('/sector')->name('sector.')->group(function() {
+Route::middleware('auth')->prefix('/sector')->name('sector.')->group(function() {
 
 //    Route::get('/', SectorsIndex::class)->name('sectors.index');
 

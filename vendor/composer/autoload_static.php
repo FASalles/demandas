@@ -23,6 +23,7 @@ class ComposerStaticInit334455a595689be6d4fb6148704fae77
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -32,7 +33,7 @@ class ComposerStaticInit334455a595689be6d4fb6148704fae77
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
+        '2bf13e3aca1ee91fd0651925bbb63cd8' => __DIR__ . '/..' . '/mbarlow/megaphone/src/helpers.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
@@ -115,6 +116,7 @@ class ComposerStaticInit334455a595689be6d4fb6148704fae77
         'M' => 
         array (
             'Monolog\\' => 8,
+            'MBarlow\\Megaphone\\' => 18,
         ),
         'L' => 
         array (
@@ -388,6 +390,10 @@ class ComposerStaticInit334455a595689be6d4fb6148704fae77
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'MBarlow\\Megaphone\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mbarlow/megaphone/src',
+        ),
         'Livewire\\' => 
         array (
             0 => __DIR__ . '/..' . '/livewire/livewire/src',
@@ -540,6 +546,7 @@ class ComposerStaticInit334455a595689be6d4fb6148704fae77
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Data\\Repositories\\Demands' => __DIR__ . '/../..' . '/app/Data/Repositories/Demands.php',
+        'App\\Data\\Repositories\\Repository' => __DIR__ . '/../..' . '/app/Data/Repositories/Repository.php',
         'App\\Data\\Repositories\\Sectors' => __DIR__ . '/../..' . '/app/Data/Repositories/Sectors.php',
         'App\\Data\\Repositories\\Systems' => __DIR__ . '/../..' . '/app/Data/Repositories/Systems.php',
         'App\\Data\\Repositories\\Users' => __DIR__ . '/../..' . '/app/Data/Repositories/Users.php',
@@ -565,7 +572,10 @@ class ComposerStaticInit334455a595689be6d4fb6148704fae77
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Livewire\\BaseIndex' => __DIR__ . '/../..' . '/app/Http/Livewire/BaseIndex.php',
         'App\\Http\\Livewire\\Counter' => __DIR__ . '/../..' . '/app/Http/Livewire/Counter.php',
+        'App\\Http\\Livewire\\DemandsIndex' => __DIR__ . '/../..' . '/app/Http/Livewire/DemandsIndex.php',
         'App\\Http\\Livewire\\SectorsIndex' => __DIR__ . '/../..' . '/app/Http/Livewire/SectorsIndex.php',
+        'App\\Http\\Livewire\\SystemsIndex' => __DIR__ . '/../..' . '/app/Http/Livewire/SystemsIndex.php',
+        'App\\Http\\Livewire\\UsersIndex' => __DIR__ . '/../..' . '/app/Http/Livewire/UsersIndex.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -3385,6 +3395,16 @@ class ComposerStaticInit334455a595689be6d4fb6148704fae77
         'Livewire\\Wireable' => __DIR__ . '/..' . '/livewire/livewire/src/Wireable.php',
         'Livewire\\WithFileUploads' => __DIR__ . '/..' . '/livewire/livewire/src/WithFileUploads.php',
         'Livewire\\WithPagination' => __DIR__ . '/..' . '/livewire/livewire/src/WithPagination.php',
+        'MBarlow\\Megaphone\\Components\\Display' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Components/Display.php',
+        'MBarlow\\Megaphone\\Console\\ClearOldNotifications' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Console/ClearOldNotifications.php',
+        'MBarlow\\Megaphone\\HasMegaphone' => __DIR__ . '/..' . '/mbarlow/megaphone/src/HasMegaphone.php',
+        'MBarlow\\Megaphone\\Livewire\\Megaphone' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Livewire/Megaphone.php',
+        'MBarlow\\Megaphone\\Livewire\\MegaphoneAdmin' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Livewire/MegaphoneAdmin.php',
+        'MBarlow\\Megaphone\\MegaphoneServiceProvider' => __DIR__ . '/..' . '/mbarlow/megaphone/src/MegaphoneServiceProvider.php',
+        'MBarlow\\Megaphone\\Types\\BaseAnnouncement' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Types/BaseAnnouncement.php',
+        'MBarlow\\Megaphone\\Types\\General' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Types/General.php',
+        'MBarlow\\Megaphone\\Types\\Important' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Types/Important.php',
+        'MBarlow\\Megaphone\\Types\\NewFeature' => __DIR__ . '/..' . '/mbarlow/megaphone/src/Types/NewFeature.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',

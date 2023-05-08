@@ -23,6 +23,10 @@ Class Demands
         $demand->started_at = $request->started_at;
         $demand->ended_at = $request->ended_at;
 
+//        $demand = $request->all();
+
+        if($image = $request->file('image')) $demand['image'] = $image->store('image', 'public');
+
         $demand->save();
 
         if($image = $request->file('image')) $demand->image = $image->store('image', 'public');

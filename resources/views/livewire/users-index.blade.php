@@ -9,7 +9,7 @@
         <imput class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <imput class="flex flex-row justify-end">
-                <a href="{{ route('user.create') }}" class="m-4 px-4 py-2 shadow rounded-full text-white font-bold bg-green-700 hover:bg-green-900 transition ease-in-out duration-200">
+                <a href="{{ route('user.create') }}" class="focus:ring-2 m-4 px-4 py-2 shadow rounded-full text-white font-bold bg-green-700 hover:bg-green-900 transition ease-in-out duration-200">
                     Criar Usuário
                 </a>
 
@@ -41,9 +41,8 @@
                             <td class="px-2 py-4 text-left">{{ $user->email }}</td>
                             </td>
                             <td class="px-2 py-4 text-right">
-                                <a href="{{route('user.edit', ['user' => $user->id]) }}" class="px-4 py-2 shadow rounded
-                                                        text-white text-bold bg-yellow-500 hover:bg-yellow-700
-                                                        transition ease-in-out duration-200">Editar</a>
+                                <a href="{{route('user.edit', ['user' => $user->id]) }}" class="btn
+                                                        bg-yellow-500 hover:bg-yellow-700">Editar</a>
                             </td>
                             <td class="px-2 py-4 text-left">
                                 <form action="{{route('user.destroy', ['user' => $user->id]) }}" method="post">
@@ -51,8 +50,9 @@
 {{--                                    @method('DELETE')--}}
                                     @can('users:delete')
                                         <button class="px-4 py-2 shadow rounded
-                                                        text-white text-bold bg-red-700 hover:bg-red-900
-                                                        transition ease-in-out duration-200">Remover</button>
+                                                        text-white text-bold
+                                                        transition ease-in-out duration-200
+                                                        bg-red-700 hover:bg-red-900">Remover</button>
                                     @endcan
                                 </form>
 

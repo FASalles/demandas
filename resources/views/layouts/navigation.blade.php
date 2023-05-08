@@ -14,7 +14,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <i class="fa-sharp fa-regular fa-bell"></i>
+                    <h1>oi</h1>
+                    <livewire:megaphone></livewire:megaphone>
+
                 </div>
             </div>
 

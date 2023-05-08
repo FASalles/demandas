@@ -37,10 +37,10 @@
 
                                 <div style="flex: 1;">
                                     <label for="" class="block text-white mb-2">Relativa ao setor</label>
-                                    <select class="select2" name="sectors_id" value="{{ old('sectors_id') }}">
+                                    <select class="select2" name="demands_id" value="{{ old('demands_id') }}">
                                         <option value="">SELECIONE O SETOR</option>
-                                        @foreach($sectors as $sector)
-                                            <option value="{{ $sector->id }}">{{$sector->name}}</option>
+                                        @foreach($demands as $demand)
+                                            <option value="{{ $demand->id }}">{{$demand->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -87,11 +87,32 @@
                             <input type="file" name="image" class="form-control">
                         </div>
 
-
                         <div class="w-full flex justify-end">
                             <button class="mt-10 px-4 py-2 shadow rounded text-xl text-white text-bold bg-green-700 hover:bg-green-900 transition ease-in-out duration-200">
                                 Criar Demanda
                             </button>
+                        </div>
+
+                            @foreach($demands as $demand)
+                                <img src="{{asset('storage/' . $demand->image)}}">
+                                {{ $demand->title }}
+                            @endforeach
+
+                        <div class="mb-5">
+                            <div class="w-1/3">
+                                <label class="block">Capa</label>
+
+                                <input type="file" wire:model.defer="image" class="w-full">
+
+{{--                                @error('image')--}}
+{{--                                <strong class="block mt-4 text-red-700 font-bold">{{$message}}</strong>--}}
+{{--                                @enderror--}}
+                            </div>
+                            <div class="w-2/3">
+                                @if($image)
+                                    <img src="{{$cover->temporaryUrl()}}" alt="">
+                                @endif
+                            </div>
                         </div>
 
                 </div>
