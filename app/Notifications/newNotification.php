@@ -19,12 +19,12 @@ class newNotification extends BaseAnnouncement
     public function sendnotification()
     {
         $notification = new Important(
-            'Internet',
-            'internet fora hoje'
+            'Internet 2',
+            'internet fora hoje 2'
         );
 
-        $user = \App\Models\User::first();
+        $user = \App\Models\User::find(1);
 
-        $user->notify(new newNotification());
+        $user->notify($notification);
     }
 }

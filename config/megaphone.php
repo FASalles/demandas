@@ -13,7 +13,7 @@ return [
         \MBarlow\Megaphone\Types\General::class,
         \MBarlow\Megaphone\Types\NewFeature::class,
         \MBarlow\Megaphone\Types\Important::class,
-        \App\Models\User::class
+//        \App\Models\User::class
     ],
 
     /*

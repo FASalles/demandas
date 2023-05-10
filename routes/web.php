@@ -3,17 +3,34 @@
 use App\Http\Controllers\ProfileController;
 
 use Illuminate\Support\Facades\Route;
+use App\Notifications\newNotification;
+use MBarlow\Megaphone\Types\Important;
 
 
 Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/notification', function () {
-    $user = \App\Models\User::first();
 
-    $user->notify(new \App\Notifications\newNotification());
+Route::get('/en', function () {
+    sendnotification();
 });
+
+
+
+
+function sendnotification()
+{
+    $notification = new Important(
+        'Internet 2',
+        'internet fora hoje 2'
+    );
+
+    $user = \App\Models\User::find(1);
+
+    $user->notify($notification);
+}
+
 
 require __DIR__.'/demands.php';
 require __DIR__.'/sectors.php';

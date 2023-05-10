@@ -20,17 +20,17 @@ class DemandsIndex extends Component
     public function render()
     {
         if (auth()->user()->isAn('admin')) {
-            $demands = Demand::orderBy('id', 'asc')->paginate(4);
+            $model = Demand::class;
         } else {
-            $demands = auth()->user()->demands()->orderBy('id', 'asc')->paginate(5);
+            $model = auth()->user()->demands()->getQuery();
         }
 
-        $model = Demand::class;
-
-        return view('livewire.demands-index')
-                ->with(['demands' => $model::where('title', 'ilike', '%'.$this->searchString.'%' ?? '' )
+        return view('livewire.demands-index', [
+            'demands' => $model->where('title', 'ilike', '%'.$this->searchString.'%')
                 ->orderBy('id', 'asc')
-                ->paginate(5)]);
+                ->paginate(5)
+        ]);
+
     }
 
 }
