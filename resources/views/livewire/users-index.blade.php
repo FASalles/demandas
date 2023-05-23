@@ -14,8 +14,17 @@
                 </a>
 
                 <input type="text" class="m-4 border rounded px-4 py-2" placeholder="pesquisar..."
-                       wire:model.debounce.500ms="searchString">
-            </imput>
+                       wire:model.debounce.500ms="search">
+                </imput>
+
+                 @if (!empty($results))
+                    <ul>
+                        @foreach ($results as $result)
+                            <li>{{ $result->column_name }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+
             <div class="m-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <table class=" w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">
                     <thead class="m-4">
@@ -27,12 +36,6 @@
                     </tr>
                     </thead>
                     <tbody>
-
-                    @if (session('success'))
-                        <div class="text-center font-bold bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                            {{ session('success') }}
-                        </div>
-                    @endif
 
                     @forelse($users as $user)
                         <tr class="even:bg-white odd:bg-blue-100">
@@ -65,6 +68,9 @@
                     @endforelse
                     </tbody>
                 </table>
+
+                <div class="bg-red-500">
+                </div>
 
                 {{$users->links()}}
             </div>

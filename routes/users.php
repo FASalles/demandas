@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+
 Route::middleware('auth')->get('/user', \App\Http\Livewire\UsersIndex::class)
     ->name('user.index');
 

@@ -11,7 +11,12 @@ class UsersIndex extends Component
 {
     use WithPagination;
 
-    public $searchString = '';
+    public $search = '';
+
+    protected $queryString = [
+            'search' => ['except' => ''],
+            'page' => ['except' => 1]
+        ];
 
     public function updatedSearchString()
     {
@@ -22,7 +27,7 @@ class UsersIndex extends Component
     {
         $model = User::class;
 
-        return view('livewire.users-index')->with(['users' => $model::where('name', 'ilike', '%'.$this->searchString.'%' ?? '' )
+        return view('livewire.users-index')->with(['users' => $model::where('name', 'ilike', '%'.$this->search.'%' ?? '' )
             ->orderBy('id', 'asc')->paginate(5)]);
     }
 }

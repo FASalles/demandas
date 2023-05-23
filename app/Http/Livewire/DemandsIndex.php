@@ -10,7 +10,14 @@ class DemandsIndex extends Component
 {
     use WithPagination;
 
-    public $searchString = '';
+    public $paginationRange = 5;
+
+    public $search = '';
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'page' => ['except' => 1]
+    ];
 
     public function updatedSearchString()
     {
@@ -20,17 +27,16 @@ class DemandsIndex extends Component
     public function render()
     {
         if (auth()->user()->isAn('admin')) {
-            $model = Demand::class;
+            $model = Demand::query();
         } else {
             $model = auth()->user()->demands()->getQuery();
         }
 
         return view('livewire.demands-index', [
-            'demands' => $model->where('title', 'ilike', '%'.$this->searchString.'%')
+            'demands' => $model->where('title', 'ilike', '%'.$this->search.'%')
                 ->orderBy('id', 'asc')
                 ->paginate(5)
         ]);
-
     }
 
 }

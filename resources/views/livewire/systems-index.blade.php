@@ -15,7 +15,7 @@
                 Criar Sistema</a>
 
                 <input type="text" class="m-4 border rounded px-4 py-2" placeholder="pesquisar..."
-                       wire:model.debounce.500ms="searchString">
+                       wire:model.debounce.500ms="search">
             </imput>
             <div class="m-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <table class=" w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">

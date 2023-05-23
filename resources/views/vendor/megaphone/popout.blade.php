@@ -3,7 +3,7 @@
 
     <div class="2xl:w-4/12 bg-gray-50 shadow-md h-screen overflow-y-auto p-8 pt-3 absolute right-0 z-30">
         <div class="flex items-center justify-between">
-            <p tabindex="0" class="focus:outline-none text-2xl font-semibold leading-6 text-gray-800">Notifications</p>
+            <p tabindex="0" class="focus:outline-none text-2xl font-semibold leading-6 text-gray-800">Notificações</p>
             <button role="button" aria-label="close modal" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 rounded-md cursor-pointer" @click="open = false">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 6L6 18" stroke="#4B5563" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
@@ -14,7 +14,7 @@
 
         @if ($unread->count() > 0)
             <h2 tabindex="0" class="focus:outline-none text-sm leading-normal pt-8 border-b pb-2 border-gray-300 text-gray-600">
-                Unread Notifications
+                Notificações não lidas
             </h2>
 
             @foreach ($unread as $announcement)
@@ -36,7 +36,7 @@
 
             @if ($announcements->count() > 0)
                 <h2 tabindex="0" class="focus:outline-none text-sm leading-normal pt-8 border-b pb-2 border-gray-300 text-gray-600">
-                    Previous Notifications
+                    Notificações anteriores
                 </h2>
             @endif
         @endif

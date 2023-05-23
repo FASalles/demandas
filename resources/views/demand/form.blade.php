@@ -10,13 +10,13 @@
             <div class="flex justify-center items-center">
                 <div class="bg-gray-700 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5">
 
-                    <form action="{{route('demand.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('demand.store')}}, {{ route('demand.add') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <span style="display: flex;">
                                 <div style="flex: 1; margin-right: 10px;">
                                     <label for="" class="block text-white mb-2">Título</label>
-                                    <input type="text" class="w-full rounded" name="title" value="{{ old('title') }}">
+                                    <input type="text" class="w-full rounded" name="title" id="notification_title" value="{{ old('title') }}">
                                 </div>
 
                                 <div style="flex: 1;">
@@ -27,7 +27,7 @@
 
                         <div style="flex: 1;">
                             <label for="" class="block text-white mb-2">Resumo</label>
-                            <textarea class="w-full rounded" name="body">{{ old('body') }}</textarea>
+                            <textarea class="w-full rounded" name="body" id="notification_body">{{ old('body') }}</textarea>
 
                             <span style="display: flex;">
                                 <div style="flex: 1; margin-right: 10px;">
@@ -50,8 +50,8 @@
                             <div class="flex">
                                 <div class="w-1/2">
                                     <label for="" class="block text-white mb-2">Técnico responsável</label>
-                                    <select class="select2" name="users_id" value="{{ old('users_id') }}">
-                                        <option value="">SELECIONE O TÉCNICO</option>
+                                    <select class="select2" name="user_id" id="user_id">
+                                    <option value="">SELECIONE O TÉCNICO</option>
                                         @foreach($users as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                         @endforeach

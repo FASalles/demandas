@@ -12,7 +12,12 @@ class SystemsIndex extends Component
 {
     use WithPagination;
 
-    public $searchString = '';
+    public $search = '';
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'page' => ['except' => 1]
+    ];
 
     public function updatedSearchString()
     {
@@ -23,7 +28,7 @@ class SystemsIndex extends Component
     {
         $model = System::class;
 
-        return view('livewire.systems-index')->with(['systems' => $model::where('name', 'ilike', '%'.$this->searchString.'%' ?? '' )
+        return view('livewire.systems-index')->with(['systems' => $model::where('name', 'ilike', '%'.$this->search.'%' ?? '' )
             ->orderBy('id', 'asc')->paginate(5)]);
     }
 }
