@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-
 Route::middleware('auth')->get('/user', \App\Http\Livewire\UsersIndex::class)
     ->name('user.index');
 
 Route::middleware('auth')->prefix('/user')->name('user.')->group(function() {
+
 //Route::get('/index', [UserController::class, 'index'])->name('index');
 
     Route::get('/create', [UserController::class, 'create'])->name('create');
@@ -19,4 +19,5 @@ Route::middleware('auth')->prefix('/user')->name('user.')->group(function() {
     Route::post('/destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
 
 //Route::middleware('auth')->resource('user', \App\Http\Controllers\UserController::class);
+
 });

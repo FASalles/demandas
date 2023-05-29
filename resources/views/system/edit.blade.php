@@ -13,7 +13,33 @@
 {{--                    @method('PUT')--}}
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Nome</label>
-                        <input type="text" class="w-full rounded" name="name" value="{{ $system->name }}">
+                        <input type="text" class="w-full rounded" @error('name') border-red-700 @enderror" name="name" value="{{ $system->name }}">
+                    </div>
+
+                    @error('name')
+                    <span class="block mt-4 text-red-700 font-bold">{{$message}}</span>
+                    @enderror
+
+                    <div class="w-full mb-6">
+                        <label for="" class="block text-white mb-2">Analista responsável</label>
+                        <input type="text" name="developer" class="w-full rounded" value="{{ $system->developer }}" >
+                    </div>
+
+                    <div class="w-full mb-6">
+                        <label for="" class="block text-white mb-2">Usuário responsável</label>
+                        <input type="text" name="user" class="w-full rounded" value="{{ $system->user }}" >
+                    </div>
+
+                    <div class="flex">
+                        <span class="w-full mb-6 mx-2">
+                            <label for="" class="block text-white mb-2">Versão Laravel e PHP</label>
+                            <input type="text" name="laravelVersion" class="w-full rounded" value="{{ $system->laravelVersion }}" >
+                        </span>
+
+                        <div class="w-full mb-6 mx-2">
+                            <label for="" class="block text-white mb-2">Demais tecnologias</label>
+                            <input type="text" name="otherTecs" class="w-full rounded" value="{{ $system->otherTecs }}" >
+                        </div>
                     </div>
 
                     <div class="w-full flex justify-end">

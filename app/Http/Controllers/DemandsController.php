@@ -7,11 +7,14 @@ use App\Data\Repositories\Sectors;
 use App\Data\Repositories\Systems;
 use App\Data\Repositories\Users;
 use App\Http\Requests\DemandsRequest;
+use App\Mail\Contact;
 use App\Models\Demand;
 use App\Models\Sector;
 use App\Models\System;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Mail;
 
 class DemandsController extends Controller
 {
@@ -65,8 +68,17 @@ class DemandsController extends Controller
 
         $demand = $this->repository->add($request);
 
+//        $sent = mail::to('felipesalles@outlook.com', 'Felipe')->send(new Contact([
+//            'fromEmail' => $request->input('email'),
+//            'fromName' => $request->input('name'),
+//            'body' => $request->input('body')
+//        ]));
+//
+//        var_dump('email enviado!', $sent);
+
         return redirect()->route('demand.index')
             ->with('success', 'Demanda "' . $demand->title . '" criada com sucesso!');
+
     }
 
     public function edit($demand)

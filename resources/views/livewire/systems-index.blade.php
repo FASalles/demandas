@@ -23,6 +23,10 @@
                     <tr class="m-4">
                         <th class="px-2 py-4 text-left">#</th>
                         <th class="px-2 py-4 text-left">Nome</th>
+                        <th class="px-2 py-4 text-left">Desenvolvedor Responsável</th>
+                        <th class="px-2 py-4 text-left">Usuário Responsável</th>
+                        <th class="px-2 py-4 text-left">Versão Laravel e PHP</th>
+                        <th class="px-2 py-4 text-left">Outras Tecnologias</th>
                         <th class="px-4 py-4 text-right">Ações</th>
                     </tr>
                     </thead>
@@ -38,7 +42,10 @@
                         <tr class="even:bg-white odd:bg-blue-100">
                             <td class="px-2 py-4 text-left">{{ $system->id }}</td>
                             <td class="px-2 py-4 text-left">{{ $system->name }}</td>
-                            </td>
+                            <td class="px-2 py-4 text-left">{{ $system->developer }}</td>
+                            <td class="px-2 py-4 text-left">{{ $system->user }}</td>
+                            <td class="px-2 py-4 text-left">{{ $system->laravelVersion }}</td>
+                            <td class="px-2 py-4 text-left">{{ $system->otherTecs }}</td>
                             <td class="px-2 py-4 text-right">
                                 <a href="{{route('system.edit', ['system' => $system->id]) }}" class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-yellow-500 hover:bg-yellow-700
@@ -64,6 +71,10 @@
                     @endforelse
                     </tbody>
                 </table>
+
+                <a href="http://localhost:10002/pdfSystems" target="_blank" class="m-4 p-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Baixar lista
+                </a>
 
                 {{$systems->links()}}
             </div>

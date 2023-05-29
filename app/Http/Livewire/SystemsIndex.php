@@ -19,7 +19,7 @@ class SystemsIndex extends Component
         'page' => ['except' => 1]
     ];
 
-    public function updatedSearchString()
+    public function updatedSearch()
     {
         $this->resetPage();
     }

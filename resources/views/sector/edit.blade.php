@@ -12,13 +12,17 @@
                     @csrf
 {{--                    @method('PUT')--}}
                     <div class="w-full mb-6">
-                        <label for="" class="block text-white mb-2">ID</label>
-                        <input type="text" class="w-full rounded" name="id" value="{{ $sector->id }}">
+                        <label for="" class="block text-white mb-2">Nome</label>
+                        <input type="text" class="w-full rounded" name="name" @error('name') border-red-700 @enderror value="{{ $sector->name }}">
                     </div>
 
+                    @error('name')
+                    <span class="block mt-4 text-red-700 font-bold">{{$message}}</span>
+                    @enderror
+
                     <div class="w-full mb-6">
-                        <label for="" class="block text-white mb-2">Nome</label>
-                        <input type="text" class="w-full rounded" name="name" value="{{ $sector->name }}">
+                        <label for="" class="block text-white mb-2">Usuário Responsável</label>
+                        <input type="text" class="w-full rounded" name="user" value="{{ $sector->user }}">
                     </div>
 
                     <div class="w-full flex justify-end">

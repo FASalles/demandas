@@ -7,17 +7,7 @@
     <div class="bg-gray-800 py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
 
-{{--            @if($errors->any())--}}
-{{--                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">--}}
-{{--                    <ul class="list-disc list-inside">--}}
-{{--                        @foreach($errors->all() as $error)--}}
-{{--                            <li>{{ $error }}</li>--}}
-{{--                        @endforeach--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            @endif--}}
-
-            <div class="bg-gray-500 dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg p-5">
+            <div class="bg-gray-700 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5">
                 <form action="{{route('system.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="w-full mb-6">
@@ -27,6 +17,36 @@
                         @error('name')
                             <span class="block mt-4 text-red-700 font-bold">{{$message}}</span>
                         @enderror
+                    </div>
+
+                    <div class="w-full mb-6">
+                        <label for="" class="block text-white mb-2">Analista responsável</label>
+                        <input type="text" name="developer" class="w-full rounded" value="{{ old('developer') }}" >
+
+                        @error('name')
+                        <span class="block mt-4 text-red-700 font-bold">{{$message}}</span>
+                        @enderror
+                    </div>
+
+                    <div class="w-full mb-6">
+                        <label for="" class="block text-white mb-2">Usuário responsável</label>
+                        <input type="text" name="user" class="w-full rounded" value="{{ old('user') }}" >
+
+                        @error('name')
+                        <span class="block mt-4 text-red-700 font-bold">{{$message}}</span>
+                        @enderror
+                    </div>
+
+                    <div class="flex">
+                        <span class="w-full mb-6 mx-2">
+                            <label for="" class="block text-white mb-2">Versão Laravel e PHP</label>
+                            <input type="text" name="laravelVersion" class="w-full rounded  value="{{ old('laravelVersion') }}" >
+                        </span>
+
+                        <div class="w-full mb-6 mx-2">
+                            <label for="" class="block text-white mb-2">Demais tecnologias</label>
+                            <input type="text" name="otherTecs" class="w-full rounded  value="{{ old('otherTecs') }}" >
+                        </div>
                     </div>
 
                     <div class="w-full flex justify-end">

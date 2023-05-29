@@ -22,7 +22,12 @@ Class Demands
 
         $user = User::find($user_id);
 
-        $user->notify($notification);
+        Notification::send($user, $notification);
+
+        $additionalUser = User::where('name', 'demandasadmin')->first();
+        Notification::send($additionalUser, $notification);
+
+//        $user->notify($notification);
     }
 
     public function add(DemandsRequest $request): Demand

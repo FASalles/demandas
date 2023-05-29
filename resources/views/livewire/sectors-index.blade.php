@@ -9,6 +9,7 @@
         <imput class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <imput class="flex flex-row justify-end">
+
                 <a href={{ route('sector.create')}} class="focus:ring-2 m-4 px-4 py-2 shadow rounded-full
                    text-white text-bold bg-green-700 hover:bg-green-900
                    transition ease-in-out duration-200">
@@ -21,11 +22,13 @@
                 <table class=" w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">
                     <thead class="m-4">
                     <tr class="m-4">
-                        <th class="px-2 py-4 text-left">#</th>
-                        <th class="px-2 py-4 text-left">Nome</th>
+                        <th class="px-2 py-4 text-center">ID</th>
+                        <th class="px-2 py-4 text-center">Nome</th>
+                        <th class="px-4 py-4 text-center">Usuário Responsável</th>
                         <th class="px-4 py-4 text-right">Ações</th>
                     </tr>
                     </thead>
+
                     <tbody>
 
                     @if (session('success'))
@@ -38,7 +41,8 @@
                         <tr class="even:bg-white odd:bg-blue-100">
                             <td class="px-2 py-4 text-left">{{ $sector->id }}</td>
                             <td class="px-2 py-4 text-left">{{ $sector->name }}</td>
-                            </td>
+                            <td class="px-2 py-4 text-left">{{ $sector->user }}</td>
+
                             <td class="px-2 py-4 text-right">
                                 <a href="{{route('sector.edit', ['sector' => $sector->id]) }}" class="px-4 py-2 shadow rounded
                                                         text-white text-bold bg-yellow-500 hover:bg-yellow-700
@@ -65,8 +69,14 @@
                     </tbody>
                 </table>
 
+                <a href="http://localhost:10002/pdfSectors" target="_blank" class="m-4 p-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-10">
+                    Baixar lista
+                </a>
+
                 {{$sectors->links()}}
             </div>
+
+
 
 
     </div>

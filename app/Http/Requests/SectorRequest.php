@@ -24,6 +24,7 @@ class SectorRequest extends FormRequest
         return [
 
             'name' => 'required|min:3',
+            'user' => '',
         ];
     }
 

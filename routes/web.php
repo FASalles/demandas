@@ -1,13 +1,19 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 
 Route::get('/', function () {
     return view('dashboard');
 });
 
+
+
+Route::get('/pdfUsers', [PdfController::class, 'geraPdfUsers'])->name('pdf');
+Route::get('/pdfSectors', [PdfController::class, 'geraPdfSectors'])->name('pdf');
+Route::get('/pdfSystems', [PdfController::class, 'geraPdfSystems'])->name('pdf');
+Route::get('/pdfDemands', [PdfController::class, 'geraPdfDemands'])->name('pdf');
 
 
 

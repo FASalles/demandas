@@ -56,7 +56,13 @@ class SystemController extends Controller
     {
         $system = $this->system->findOrFail($system);
 
-        $system->update($request->all());
+        $system->name = $request->input('name');
+        $system->developer = $request->input('developer');
+        $system->user = $request->input('user');
+        $system->laravelVersion = $request->input('laravelVersion');
+        $system->otherTecs = $request->input('otherTecs');
+
+        $system->save();
 
         return redirect()->route('system.index')
             ->with('success', 'Sistema "' . $system->name . '" editado com sucesso!');

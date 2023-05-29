@@ -37,7 +37,7 @@
 
                                 <div style="flex: 1;">
                                     <label for="" class="block text-white mb-2">Relativa ao setor</label>
-                                    <select class="select2" name="demands_id" value="{{ old('demands_id') }}">
+                                    <select class="select2" name="sectors_id" value="{{ old('demands_id') }}">
                                         <option value="">SELECIONE O SETOR</option>
                                         @foreach($demands as $demand)
                                             <option value="{{ $demand->id }}">{{$demand->name}}</option>

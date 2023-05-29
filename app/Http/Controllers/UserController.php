@@ -38,10 +38,10 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $user = $this->repository->add($request);
+        $users = $this->repository->add($request);
 
         return redirect()->route('user.index')
-            ->with('success', 'Usuário(a) "' . $user->name . '" adicionado com sucesso!');
+            ->with('success', 'Usuário criado com sucesso!');
     }
 
     public function edit($user)

@@ -6,6 +6,11 @@ use App\Http\Controllers\DemandsController;
 Route::middleware('auth')->get('/demand', \App\Http\Livewire\DemandsIndex::class)
     ->name('demand.index');
 
+//rota para email:
+
+Route::middleware('auth')->post('/demand', \App\Http\Livewire\DemandsIndex::class)
+    ->name('demand.index');
+
 Route::middleware('auth')->get('/demand/create', \App\Http\Livewire\DemandsCreate::class)
     ->name('demand.create');
 

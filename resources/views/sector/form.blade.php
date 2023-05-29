@@ -22,7 +22,16 @@
                     @csrf
                     <div class="w-full mb-6">
                         <label for="" class="block text-white mb-2">Nome</label>
-                        <input type="text" class="w-full rounded" name="name" value="{{ old('name') }}">
+                        <input type="text" class="w-full rounded" name="name" @error('name') border-red-700 @enderror" value="{{ old('name') }}">
+                    </div>
+
+                    @error('name')
+                    <span class="block mt-4 text-red-700 font-bold">{{$message}}</span>
+                    @enderror
+
+                    <div class="w-full mb-6">
+                        <label for="" class="block text-white mb-2">Usuário responsável</label>
+                        <input type="text" class="w-full rounded" name="user" value="{{ old('user') }}">
                     </div>
 
                     <div class="w-full flex justify-end">

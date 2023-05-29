@@ -48,7 +48,6 @@
                                 </div>
                              </span>
 
-
                                 <div class="flex m-4">
                                     <div class="w-1/2">
                                         <label for="" class="block text-white mb-2">Técnico responsável</label>

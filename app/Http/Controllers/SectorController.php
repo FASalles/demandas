@@ -58,7 +58,10 @@ class SectorController extends Controller
     {
         $sector = $this->model->findOrFail($sector);
 
-        $sector->update(request()->all());
+        $sector->name = $request->input('name');
+        $sector->user = $request->input('user');
+
+        $sector->save();
 
         return redirect()->route('sector.index')
             ->with('success', 'Setor "' . $sector->name . '" editado com sucesso!');

@@ -84,6 +84,10 @@
                     </tbody>
                 </table>
 
+                <a href="http://localhost:10002/pdfDemands" target="_blank" class="m-4 p-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Baixar lista
+                </a>
+
                 {{$demands->links()}}
             </div>
 

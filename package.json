@@ -25,5 +25,9 @@
             ],
             "extensions": "js,jsx"
         }
+    },
+    "dependencies": {
+        "laravel-precognition-vue": "^0.2.1",
+        "vue": "^3.2.36"
     }
 }
