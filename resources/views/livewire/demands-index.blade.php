@@ -18,19 +18,21 @@
                        wire:model.debounce.500ms="search">
             </imput>
             <div class="m-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
                 <table class="m-4 w-full bg-white rounded shadow p-4 min-w-full divide-y divide-gray-200">
                     <thead class="m-4">
                     <tr class="m-4">
                         <th class="px-2 py-4 text-left">#</th>
                         <th class="px-2 py-4 text-left">Título</th>
                         <th class="px-2 py-4 text-left">Resumo</th>
-                        <th class="px-2 py-4 text-left">Issue associada</th>
+                        <th class="px-2 py-4 text-left">Issue Github associada</th>
                         <th class="px-2 py-4 text-left">Horas orçadas</th>
                         <th class="px-2 py-4 text-left">Relativa ao setor</th>
+                        <th class="px-2 py-4 text-left">Relativa ao usuário</th>
                         <th class="px-2 py-4 text-left">Técnico responsável</th>
                         <th class="px-2 py-4 text-left">Criada em</th>
-                        <th class="px-2 py-4 text-left">Status</th>
-                        <th class="px-2 py-4 text-left">Ações</th>
+{{--                        <th class="px-2 py-4 text-left">Status</th>--}}
+                        <th class="px-2 py-4 text-right">Ações</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,39 +45,32 @@
 
                     @forelse($demands as $demand)
                         <tr class="even:bg-white odd:bg-blue-100">
-                            <td class="px-2 py-4 text-left">{{ $demand->id }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->title }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->body }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->attached_issue }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->budgeted_hours }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->sector_id }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->user_id }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->system_id }}</td>
-                            <td class="px-2 py-4 text-left">{{ $demand->demands_type_id }}</td>
+                            {{-- {{dd($demand)}} --}}
+                            <td class="px-2 py-4 text-left border">{{ $demand->id }}</td>
+                            <td class="px-2 py-4 text-left border">{{ $demand->title }}</td>
+                            <td class="px-2 py-4 text-left border">{{ $demand->body }}</td>
+                            <td class="px-2 py-4 text-left border">{{ $demand->attached_issue }}</td>
+                            <td class="px-2 py-4 text-left border">{{ $demand->budgeted_hours }}</td>
+                            <td class="px-2 py-4 text-left border">{{ $demand->sector ? $demand->sector->name : '' }}</td>
+                            <td class="px-2 py-4 text-left border">{{ $demand->system ? $demand->system->name : '' }}</td>
+                            <td class="px-2 py-4 text-left border">{{ $demand->user ? $demand->user->name : '' }}</td>
+                            <td class="px-2 py-4 text-left border">{{ date('d/m/Y', strtotime($demand->created_at)) }}</td>
 
-                            <td class="px-2 py-4 text-left">
-                                    <span class="font-bold {{ $demand->is_active ? 'text-green-800' : 'text-red-800' }}">
-                                    {{ $demand->is_active ? 'Ativo' : 'Inativo' }}
-                                    </span>
-                            </td>
-                            <td class="px-2 py-4 text-left">
+                            <td class="px-2 py-4 text-left border">
                                 <a href="/demand/{{ $demand->id }}/edit"
-                                   class="px-4 py-2 shadow rounded
-                                                        text-white text-bold bg-yellow-500 hover:bg-yellow-700
-                                                        transition ease-in-out duration-200">Editar</a>
+                                   class="px-4 py-2 shadow rounded text-white text-bold bg-yellow-500 hover:bg-yellow-700 transition ease-in-out duration-200">Editar</a>
                             </td>
-                            <td>
-                                <form action="{{route('demand.destroy', ['demand' => $demand->id]) }}" method="post">
+                            <td class="border">
+                                <form action="{{ route('demand.destroy', ['demand' => $demand->id]) }}" method="post">
                                     @csrf
-{{--                                    @method('DELETE')--}}
+                                    {{-- @method('DELETE') --}}
                                     @can('demand:delete')
-                                        <button class="px-4 py-2 shadow rounded
-                                                            text-white text-bold bg-red-700 hover:bg-red-900
-                                                            transition ease-in-out duration-200">Remover</button>
+                                        <button class="px-4 py-2 shadow rounded text-white text-bold bg-red-700 hover:bg-red-900 transition ease-in-out duration-200">Remover</button>
                                     @endcan
                                 </form>
                             </td>
                         </tr>
+
                     @empty
                         <tr>
                             <td colspan="4">Nenhuma demanda encontrado!</td>

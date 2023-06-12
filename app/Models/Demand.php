@@ -24,19 +24,23 @@ class Demand extends Model
             'image'
         ];
 
+    protected $with = ['user'];
+
+
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'users_id');
     }
 
     public function sector()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Sector::class, 'sectors_id');
     }
 
     public function system()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(System::class, 'system_id');
     }
 }
 

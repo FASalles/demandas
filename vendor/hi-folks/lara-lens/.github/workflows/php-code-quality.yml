@@ -1,0 +1,52 @@
+name: Code Quality Workflow
+on:
+  push:
+    branches:
+      - develop
+      - features/**
+      - feature/**
+  pull_request:
+      branches: [ develop ]
+
+jobs:
+  laravel-tests:
+    strategy:
+        matrix:
+            operating-system: [ubuntu-latest]
+            php-versions: [ '8.2', '8.1', '8.0' ]
+            dependency-stability: [ 'prefer-stable','prefer-lowest' ]
+
+    runs-on: ${{ matrix.operating-system }}
+
+
+    name: P${{ matrix.php-versions }} - L${{ matrix.laravel }} - ${{ matrix.dependency-stability }} - ${{ matrix.operating-system}}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install PHP versions
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+    - name: Update Dependencies with latest stable
+      if: matrix.dependency-stability == 'prefer-stable'
+      run: composer update --prefer-stable
+    - name: Update Dependencies with lowest stable
+      if: matrix.dependency-stability == 'prefer-lowest'
+      run: composer update --prefer-stable --prefer-lowest
+
+# Code quality
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      env:
+        SESSION_DRIVER: array
+      run: composer test
+
+    - name: Execute Code Sniffer via phpcs
+      run: |
+        composer style-fix
+
+    - name: Execute Code Static Analysis (PHP Stan + Larastan)
+      run: |
+        composer phpstan

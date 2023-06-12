@@ -68,14 +68,6 @@ class DemandsController extends Controller
 
         $demand = $this->repository->add($request);
 
-//        $sent = mail::to('felipesalles@outlook.com', 'Felipe')->send(new Contact([
-//            'fromEmail' => $request->input('email'),
-//            'fromName' => $request->input('name'),
-//            'body' => $request->input('body')
-//        ]));
-//
-//        var_dump('email enviado!', $sent);
-
         return redirect()->route('demand.index')
             ->with('success', 'Demanda "' . $demand->title . '" criada com sucesso!');
 

@@ -1,0 +1,80 @@
+{
+    "name": "hi-folks/lara-lens",
+
+    "description": "Laravel Diagnostic command for configuration, db connection, http request",
+    "keywords": [
+        "laravel",
+        "diagnostic",
+        "cli",
+        "package",
+        "command-line",
+        "console",
+        "hi-folks",
+        "lara-lens"
+    ],
+    "homepage": "https://github.com/hi-folks/lara-lens",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Roberto Butti",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1|^8.2",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support": "v8.75.0|^9.0|^10.0",
+        "nunomaduro/termwind": "^1.13"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^3.0",
+        "laravel/pint": "^1.4",
+        "nunomaduro/larastan": "^1.0.0|^2.0",
+        "orchestra/testbench": "^6.23.2|^7.0|^8.0",
+        "pestphp/pest": "^1.22",
+        "pestphp/pest-plugin-laravel": "^1.2",
+        "phpunit/phpunit": "^9.5.10",
+        "psalm/plugin-laravel": "^1.6.2",
+        "vimeo/psalm": "^4.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "HiFolks\\LaraLens\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HiFolks\\LaraLens\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "all": [
+            "@style-fix",
+            "@phpstan",
+            "@test"
+        ],
+        "style-fix": "pint",
+        "style-check": "pint --test",
+        "phpstan": "phpstan analyse -c ./phpstan.neon --no-progress",
+        "test": "./vendor/bin/pest --order-by random"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": false,
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HiFolks\\LaraLens\\LaraLensServiceProvider"
+            ],
+            "aliases": {
+                "LaraLens": "HiFolks\\LaraLens\\LaraLensFacade"
+            }
+        }
+    }
+}

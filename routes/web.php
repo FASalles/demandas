@@ -17,6 +17,8 @@ Route::get('/pdfDemands', [PdfController::class, 'geraPdfDemands'])->name('pdf')
 
 
 
+
+
 require __DIR__.'/demands.php';
 require __DIR__.'/sectors.php';
 require __DIR__.'/systems.php';

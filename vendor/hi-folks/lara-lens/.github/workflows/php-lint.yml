@@ -1,0 +1,30 @@
+name: PHP Syntax Checker (Lint)
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: composer run-script test
+
+    - name: PHP Syntax Checker (Lint)
+      uses: StephaneBour/actions-php-lint@8.0
+      with:
+        dir: './src'

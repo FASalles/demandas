@@ -8,6 +8,7 @@ use App\Models\Sector;
 use Livewire\WithPagination;
 
 class SectorsIndex extends Component
+
 {
     use WithPagination;
 
@@ -23,11 +24,18 @@ class SectorsIndex extends Component
         $this->resetPage();
     }
 
-    public function render(Sector $sector)
+    public function render()
     {
-        $model = Sector::class;
+        $sectors = Sector::where(function ($query) {
+            $query->where('name', 'ILIKE', '%' . $this->search . '%')
+                ->orWhere(function ($query) {
+                    $query->whereRaw("similarity(name, ?) > 0.6", [$this->search])
+                        ->orderByRaw("similarity(name, ?) DESC", [$this->search]);
+                });
+        })
+            ->paginate(5);
 
-        return view('livewire.sectors-index')->with(['sectors' => $model::where('name', 'ilike', '%'.$this->search.'%' ?? '' )
-            ->orderBy('id', 'asc')->paginate(5)]);
+        return view('livewire.sectors-index', compact('sectors'));
     }
 }
+

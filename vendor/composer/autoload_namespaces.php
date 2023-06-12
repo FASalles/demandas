@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
+    'Imgix\\' => array($vendorDir . '/imgix/imgix-php/src'),
 );
